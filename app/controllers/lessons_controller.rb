@@ -65,6 +65,6 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.expect(lesson: [ :title, :content, :github_url ])
+      params.expect(lesson: [ :title, :description, :content, :github_repository_url, :github_repository_branch ])
     end
 end

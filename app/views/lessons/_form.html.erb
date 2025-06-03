@@ -17,13 +17,24 @@
   </div>
 
   <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.textarea :content %>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.textarea :description %>
   </div>
 
   <div>
-    <%= form.label :github_url, style: "display: block" %>
-    <%= form.text_field :github_url %>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.textarea :content %>
+    <%# TODO: add note that content is overwritten if github_url present %>
+  </div>
+
+  <div>
+    <%= form.label :github_repository_url, style: "display: block" %>
+    <%= form.text_field :github_repository_url %>
+  </div>
+
+  <div>
+    <%= form.label :github_repository_branch, style: "display: block" %>
+    <%= form.text_field :github_repository_branch %>
   </div>
 
   <div>

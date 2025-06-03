@@ -16,8 +16,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_03_164946) do
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
+    t.text "description"
     t.text "content"
-    t.string "github_url"
+    t.string "github_repository_url"
+    t.string "github_repository_branch", default: "main"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

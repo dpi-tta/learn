@@ -6,7 +6,8 @@
 
 <div id="lessons">
   <% @lessons.each do |lesson| %>
-    <%= lesson.title %>
+    <strong><%= lesson.title %>:</strong>
+    <i><%= lesson.description&.truncate_words(25) %></i>
     <p>
       <%= link_to "Show this lesson", lesson %>
     </p>
