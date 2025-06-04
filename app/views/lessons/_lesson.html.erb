@@ -1,6 +1,6 @@
-<div id="<%= dom_id lesson %>">
+<div id="<%= dom_id lesson %>" class="lesson">
   <% unless @lesson.github_repository_url.present? %>
     <h1><%= @lesson.title %></h1>
   <% end %>
-  <%= render_markdown(@lesson.content) %>
+  <%= render_lesson_markdown(@lesson.content) %>
 </div>

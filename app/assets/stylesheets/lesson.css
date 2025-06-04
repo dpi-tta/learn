@@ -1,0 +1,19 @@
+
+.lesson img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lesson h1 a.heading-link,
+.lesson h2 a.heading-link,
+.lesson h3 a.heading-link {
+  opacity: 0;
+  text-decoration: none;
+}
+
+.lesson h1:hover a.heading-link,
+.lesson h2:hover a.heading-link,
+.lesson h3:hover a.heading-link {
+  opacity: 1;
+}
