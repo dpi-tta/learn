@@ -1,7 +1,21 @@
 <div id="<%= dom_id lesson %>" class="lesson">
-  <%= render "github_link", lesson: @lesson %>
+  
+  <%# TODO: move to lesson/_action ??? %>
+  <div class="d-flex align-items-center">
+    <div class="me-auto">
+      <%= render "github_link", lesson: lesson %>
+    </div>
+    <%= link_to edit_lesson_path(lesson), class: "btn btn-outline-primary me-1" do %>
+      <i class="bi bi-pencil"></i>
+    <% end %>
+    <%= button_to lesson, method: :delete, class: "btn btn-outline-danger" do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+
   <% unless @lesson.github_repository_url.present? %>
     <h1><%= @lesson.title %></h1>
+    <p><%= @lesson.description %></p>
   <% end %>
   <%= render_lesson_markdown(@lesson.content) %>
 </div>
