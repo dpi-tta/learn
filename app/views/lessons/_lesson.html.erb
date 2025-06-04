@@ -1,4 +1,5 @@
 <div id="<%= dom_id lesson %>" class="lesson">
+  <%= render "github_link", lesson: @lesson %>
   <% unless @lesson.github_repository_url.present? %>
     <h1><%= @lesson.title %></h1>
   <% end %>
