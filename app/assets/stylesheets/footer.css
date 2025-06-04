@@ -1,0 +1,44 @@
+/* Sticky footer styles */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  min-height: 70vh;
+}
+
+/* Footer */
+.footer a:hover {
+  opacity: 0.8;
+}
+
+.footer h5 {
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.footer .footer-logo {
+  filter: brightness(1.03);
+  transition: transform 0.3s ease;
+}
+
+.footer .footer-logo:hover {
+  transform: scale(1.02);
+}
+
+.footer .nav-link:hover {
+  color: var(--bs-primary) !important;
+}
+
+.footer .bi {
+  transition: transform 0.2s ease;
+}
+
+.footer .nav-link:hover .bi {
+  transform: translateY(-2px);
+}
