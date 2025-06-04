@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%# TODO: move meta tags to partial %>
     <title><%= content_for(:title) || "Learn" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,6 +27,8 @@
   </head>
 
   <body>
+    <%= render "shared/navbar" %>
+    <%# TODO: flash %>
     <%= yield %>
   </body>
 </html>

@@ -1,17 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Lessons" %>
+  <% content_for :title, "Lessons" %>
 
-<h1>Lessons</h1>
+  <h1>Lessons</h1>
 
-<div id="lessons">
-  <% @lessons.each do |lesson| %>
-    <strong><%= lesson.title %>:</strong>
-    <i><%= lesson.description&.truncate_words(25) %></i>
-    <p>
-      <%= link_to "Show this lesson", lesson %>
-    </p>
-  <% end %>
+  <div id="lessons">
+    <% @lessons.each do |lesson| %>
+      <strong><%= lesson.title %>:</strong>
+      <i><%= lesson.description&.truncate_words(25) %></i>
+      <p>
+        <%= link_to "Show this lesson", lesson %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New lesson", new_lesson_path %>
 </div>
-
-<%= link_to "New lesson", new_lesson_path %>
