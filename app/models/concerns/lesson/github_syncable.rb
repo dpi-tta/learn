@@ -3,9 +3,18 @@ require "octokit"
 module Lesson::GithubSyncable
   extend ActiveSupport::Concern
 
+  GITHUB_REPO_URL_REGEX = %r{\Ahttps://github\.com/[\w.-]+/[\w.-]+\z}
+
   included do
-    # TODO: investigate doing this in a job, or manually, instead of on create/update
-    before_validation :sync_content_from_github, on: [ :create, :update ], if: -> { github_repository_url.present? }
+    # TODO: investigate doing this in a job, or manually, instead of on before_save
+    before_save :sync_content_from_github, if: -> { github_repository_url.present? }
+
+    validates :github_repository_url, format: {
+      with: GITHUB_REPO_URL_REGEX,
+      message: "must be a valid GitHub repository URL (e.g. https://github.com/org/repo)"
+    }, allow_blank: true
+
+    validates :github_repository_url, uniqueness: { scope: :github_repository_branch, message: "and branch already used for another lesson" }, if: -> { github_repository_url.present? && github_repository_branch.present? }
   end
 
   def sync_content_from_github
