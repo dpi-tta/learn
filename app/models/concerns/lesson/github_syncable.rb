@@ -1,3 +1,5 @@
+require "octokit"
+
 module Lesson::GithubSyncable
   extend ActiveSupport::Concern
 

@@ -63,4 +63,4 @@ group :test do
 end
 
 gem "redcarpet", "~> 3.6"
-gem "octokit", "~> 10.0"
+gem "octokit", "~> 10.0", require: false
