@@ -62,5 +62,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "redcarpet", "~> 3.6"
 gem "octokit", "~> 10.0", require: false
+
+gem "kramdown", "~> 2.5"
+gem "kramdown-parser-gfm", "~> 1.1"
