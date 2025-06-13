@@ -21,8 +21,9 @@ module Lesson::GithubSyncable
     client = Octokit::Client.new(Rails.application.credentials.dig(:github))
 
     self.content = client.contents(github_repository_path, path: "content.md", accept: "application/vnd.github.v3.raw")
-    rewrite_image_asset_paths
-    rewrite_video_asset_paths
+    rewrite_markdown_image_asset_paths
+    rewrite_html_img_asset_paths
+    rewrite_html_video_asset_paths
     self.title = extract_title_from_content
     self.description = extract_description_from_content
 
@@ -69,7 +70,7 @@ module Lesson::GithubSyncable
     description_lines.join.strip
   end
 
-  def rewrite_image_asset_paths
+  def rewrite_markdown_image_asset_paths
     raw_base = "https://raw.githubusercontent.com/#{github_repository_path}/#{github_repository_branch}/"
 
     # Replace image paths like ![](assets/logo.png) or ![alt](assets/image.gif) with full github url
@@ -80,7 +81,19 @@ module Lesson::GithubSyncable
     end
   end
 
-  def rewrite_video_asset_paths
+  def rewrite_html_img_asset_paths
+    raw_base = "https://raw.githubusercontent.com/#{github_repository_path}/#{github_repository_branch}/"
+
+    # Replace <img src="assets/..."> with full GitHub raw URL
+    self.content.gsub!(/<img([^>]*?)src=["'](assets\/[^"']+)["']([^>]*)>/i) do
+      pre_attrs = Regexp.last_match(1)
+      asset_path = Regexp.last_match(2)
+      post_attrs = Regexp.last_match(3)
+      %Q(<img#{pre_attrs}src="#{raw_base}#{asset_path}"#{post_attrs}>)
+    end
+  end
+
+  def rewrite_html_video_asset_paths
     raw_base = "https://github.com/#{github_repository_path}/raw/refs/heads/#{github_repository_branch}/"
 
     # Replace <video src="assets/filename.mp4" ...> with full GitHub raw URL
