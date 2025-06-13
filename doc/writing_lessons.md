@@ -99,3 +99,26 @@ Use `<aside>` elements to include supplementary content—like tips, context, de
   <strong>Tip:</strong> You can use Ctrl + F to search this page quickly.
 </aside>
 ```
+
+## Videos
+
+`<video src="video.mp4" width="480" autoplay loop muted playsinline></video>`
+
+## GIFs
+
+Use the terminal with `ffmpeg` to create GIFs
+
+### 1. Install `ffmpeg` using Homebrew (macOS)
+
+```bash
+brew install ffmpeg
+```
+
+### 2. Run this command to convert MP4 to GIF
+
+```bash
+ffmpeg -i input.mp4 -vf "fps=10,scale=480:-1:flags=lanczos" -c:v gif output.gif
+```
+
+- fps=10: frames per second (adjust for quality/size)
+- scale=480:-1: resizes width to 480px and keeps aspect ratio
