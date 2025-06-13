@@ -1,5 +1,14 @@
 
+/* images */
 .lesson img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* videos */
+
+.lesson video {
   max-width: 100%;
   height: auto;
   display: block;
