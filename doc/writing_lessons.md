@@ -1,8 +1,12 @@
 # Writing Lessons
 
-A good praxis for writing practical software lessons for beginners should balance theory, pedagogy, and usability. Here's a recommended approach that integrates Minimalism, Cognitive Load Theory, and Scaffolded Learning.
+## Markdown
+
+Lessons should be written in [Markdown](https://www.markdownguide.org/basic-syntax/). Here is a [lesson template](https://github.com/dpi-tta-lessons/lesson-template).
 
 ## Praxis Framework
+
+A good praxis for writing practical software lessons for beginners should balance theory, pedagogy, and usability. Here's a recommended approach that integrates Minimalism, Cognitive Load Theory, and Scaffolded Learning.
 
 ### 1. Task-First Orientation (Minimalism)
 
