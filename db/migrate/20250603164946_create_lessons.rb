@@ -6,6 +6,7 @@ class CreateLessons < ActiveRecord::Migration[8.0]
       t.text :content
       t.string :github_repository_url
       t.string :github_repository_branch, default: "main"
+      t.string :slug
 
       t.timestamps
     end

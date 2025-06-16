@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   include GithubSyncable
+  include Sluggable
 
   has_many :course_lessons, dependent: :destroy
   has_many :courses, through: :course_lessons
