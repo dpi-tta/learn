@@ -13,7 +13,7 @@
 puts "Seeding courses and lesson assignments..."
 
 intro_onboarding_course = Course.find_or_create_by(
-  title: "Onboarding (INTRO)",
+  title: "Onboarding",
   description: <<~DESCRIPTION
     This course provides a comprehensive introduction to essential tools and practices for effective communication, time management, and collaborative software development. You will learn how to navigate digital platforms, engage in professional interactions, manage projects using agile methodologies, and maintain robust cybersecurity practices.
     ## Learning Objectives:
@@ -49,7 +49,7 @@ onboarding_slugs.each_with_index do |slug, index|
 end
 
 intro_html_css_course = Course.find_or_create_by(
-  title: "HTML & CSS (INTRO)",
+  title: "HTML & CSS",
   description: <<~DESCRIPTION
     This course provides an extensive overview of HTML and CSS, starting with fundamental concepts and advancing to more complex topics such as layout systems, responsive design, and deployment. You will learn how to structure web pages, style them with CSS, and eventually deploy a project online.
     ## Learning Obiectives:
