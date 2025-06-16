@@ -5,6 +5,7 @@ require 'octokit'
 ORG_NAME = "dpi-tta-lessons"
 
 client = Octokit::Client.new(Rails.application.credentials.dig(:github))
+client.auto_paginate = true
 repositories = client.org_repos(ORG_NAME)
 
 repositories.each do |repository|
@@ -19,5 +20,8 @@ repositories.each do |repository|
 
   puts "Created lesson: #{lesson.title}"
 rescue StandardError => e
-  puts "Failed to import #{repo.name}: #{e.message}"
+  puts "Failed to import #{repository.name}: #{e.message}"
 end
+
+Rails.logger.info "Completed GitHub Lesson Import from #{ORG_NAME}"
+Rails.logger.info "GitHub API remaining: #{client.rate_limit.remaining}/#{client.rate_limit.limit}"
