@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "lessons#index"
+  root "courses#index"
+  resources :courses
   resources :lessons
   draw(:health)
   draw(:pwa)

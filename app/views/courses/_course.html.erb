@@ -1,0 +1,18 @@
+<div id="<%= dom_id course %>" class="course">
+  
+  <%# TODO: move to course/_action ??? %>
+  <div class="d-flex align-items-center">
+    <h1 class="me-auto"><%= course.title %></h1>
+    <%= link_to edit_course_path(course), class: "btn btn-outline-primary me-1" do %>
+      <i class="bi bi-pencil"></i>
+    <% end %>
+    <%= button_to course, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+
+
+  <p><%= render_markdown @course.description %></p>
+
+  <%= render "lessons/list_group", lessons: course.lessons %>
+</div>
