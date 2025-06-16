@@ -1,7 +1,7 @@
-# NOTE: some classes are tightly coupled to Bootstrap
 class LessonMarkdownRenderer
-  def initialize(text)
+  def initialize(text, style_config: LessonStyleConfig)
     @text = text
+    @style_config = style_config
   end
 
   def render
@@ -26,11 +26,15 @@ class LessonMarkdownRenderer
       next unless node["id"]
       id = node["id"]
 
+      # Merge heading class from config
+      heading_class = @style_config.heading_classes[node.name]
+      node["class"] = [ node["class"], heading_class ].compact.join(" ")
+
       anchor = Nokogiri::XML::Node.new("a", doc)
       anchor["href"] = "##{id}"
-      anchor["class"] = "heading-link"
+      anchor["class"] = @style_config.heading_link_class
       anchor["aria-hidden"] = "true"
-      anchor.inner_html = '<i class="bi bi-link-45deg"></i>'
+      anchor.inner_html = @style_config.heading_link_icon
 
       node.add_child(anchor)
     end
@@ -42,58 +46,101 @@ class LessonMarkdownRenderer
     doc = Nokogiri::HTML::DocumentFragment.parse(html)
 
     doc.css("pre.repl > code").each do |code_node|
-      lang = extract_language(code_node["class"]) || "plaintext"
-      code_content = code_node.text
-
-      container = Nokogiri::XML::Node.new("div", doc)
-      container["data-controller"] = "repl"
-      container["data-repl-language-value"] = lang
-      container["class"] = "repl-container"
-
-      if (title = code_node["title"]).present?
-        title_div = Nokogiri::XML::Node.new("div", doc)
-        title_div["class"] = "repl-title"
-        title_div.content = title
-        container.add_child(title_div)
-      end
-
-      iframe = Nokogiri::XML::Node.new("iframe", doc)
-      iframe["data-repl-target"] = "output"
-      iframe["class"] = "repl-output"
-      container.add_child(iframe)
-
-      textarea = Nokogiri::XML::Node.new("textarea", doc)
-      textarea["data-repl-target"] = "editor"
-      textarea["data-action"] = "input->repl#autoResizeEditor"
-      textarea["rows"] = "1"
-      textarea["class"] = "repl-editor"
-      textarea["spellcheck"] = "false"
-      textarea["autocomplete"] = "off"
-      textarea.content = code_content
-      container.add_child(textarea)
-
-      action_row = Nokogiri::XML::Node.new("div", doc)
-      action_row["class"] = "mt-2 d-flex align-items-center"
-
-      run_btn = Nokogiri::XML::Node.new("button", doc)
-      run_btn["type"] = "button"
-      run_btn["data-action"] = "repl#run"
-      run_btn["class"] = "repl-run btn btn-primary btn-sm"
-      run_btn.content = "Run"
-      action_row.add_child(run_btn)
-
-      reset_btn = Nokogiri::XML::Node.new("button", doc)
-      reset_btn["type"] = "button"
-      reset_btn["data-action"] = "repl#reset"
-      reset_btn["class"] = "repl-reset btn btn-outline-secondary btn-sm ms-2"
-      reset_btn.content = "Reset"
-      action_row.add_child(reset_btn)
-
-      container.add_child(action_row)
+      container = build_repl_container(doc, code_node)
       code_node.parent.replace(container)
     end
 
     doc.to_html
+  end
+
+  def build_repl_container(doc, code_node)
+    lang = extract_language(code_node["class"]) || "plaintext"
+    code_content = code_node.text
+
+    container = Nokogiri::XML::Node.new("div", doc)
+    container["data-controller"] = "repl"
+    container["data-repl-language-value"] = lang
+    container["class"] = @style_config.repl_classes[:container]
+
+    container.add_child(build_repl_title(doc, code_node["title"])) if code_node["title"].present?
+    container.add_child(build_repl_editor(doc, code_content))
+    container.add_child(build_repl_actions(doc))
+    container.add_child(build_repl_output(doc))
+
+    container
+  end
+
+  def build_repl_title(doc, title)
+    title_div = Nokogiri::XML::Node.new("div", doc)
+    title_div["class"] = @style_config.repl_classes[:title]
+    title_div.content = title
+    title_div
+  end
+
+  def build_repl_editor(doc, code_content)
+    id = "editor-#{SecureRandom.hex(4)}"
+    wrapper = Nokogiri::XML::Node.new("div", doc)
+    wrapper["class"] = "form-floating mb-2"
+
+    textarea = Nokogiri::XML::Node.new("textarea", doc)
+    textarea["id"] = id
+    textarea["placeholder"] = @style_config.repl_labels[:input]
+    textarea["data-repl-target"] = "editor"
+    textarea["data-action"] = "input->repl#autoResizeEditor"
+    textarea["rows"] = "1"
+    textarea["class"] = "#{@style_config.repl_classes[:editor]} form-control"
+    textarea["spellcheck"] = "false"
+    textarea["autocomplete"] = "off"
+    textarea.content = code_content
+
+    label = Nokogiri::XML::Node.new("label", doc)
+    label["for"] = id
+    label.content = @style_config.repl_labels[:input]
+
+    wrapper.add_child(textarea)
+    wrapper.add_child(label)
+    wrapper
+  end
+
+  def build_repl_output(doc)
+    id = "output-#{SecureRandom.hex(4)}"
+    wrapper = Nokogiri::XML::Node.new("div", doc)
+    wrapper["class"] = "form-floating mb-3"
+
+    iframe = Nokogiri::XML::Node.new("iframe", doc)
+    iframe["id"] = id
+    iframe["placeholder"] = @style_config.repl_labels[:output]
+    iframe["data-repl-target"] = "output"
+    iframe["class"] = "#{@style_config.repl_classes[:output]} form-control"
+
+    label = Nokogiri::XML::Node.new("label", doc)
+    label["for"] = id
+    label.content = @style_config.repl_labels[:output]
+
+    wrapper.add_child(iframe)
+    wrapper.add_child(label)
+    wrapper
+  end
+
+  def build_repl_actions(doc)
+    row = Nokogiri::XML::Node.new("div", doc)
+    row["class"] = @style_config.repl_classes[:action_row]
+
+    run_btn = Nokogiri::XML::Node.new("button", doc)
+    run_btn["type"] = "button"
+    run_btn["data-action"] = "repl#run"
+    run_btn["class"] = @style_config.repl_classes[:run_btn]
+    run_btn.content = "Run"
+
+    reset_btn = Nokogiri::XML::Node.new("button", doc)
+    reset_btn["type"] = "button"
+    reset_btn["data-action"] = "repl#reset"
+    reset_btn["class"] = @style_config.repl_classes[:reset_btn]
+    reset_btn.content = "Reset"
+
+    row.add_child(run_btn)
+    row.add_child(reset_btn)
+    row
   end
 
   def extract_language(class_attr)
