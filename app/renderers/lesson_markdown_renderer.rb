@@ -13,6 +13,7 @@ class LessonMarkdownRenderer
 
     html = add_header_anchors(html)
     html = transform_repl_blocks(html)
+    html = transform_copyable_blocks(html)
 
     html.html_safe
   end
@@ -142,6 +143,37 @@ class LessonMarkdownRenderer
     row.add_child(reset_btn)
     row
   end
+
+  def transform_copyable_blocks(html)
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+
+    doc.css("pre.copyable").each do |pre|
+      wrapper = Nokogiri::XML::Node.new("div", doc)
+      wrapper["data-controller"] = "copy"
+      wrapper["class"] = @style_config.copyable_classes[:wrapper]
+
+      # Copy button
+      button = Nokogiri::XML::Node.new("button", doc)
+      labels = @style_config.copyable_labels
+      button["data-copy-target"] = "button"
+      button["data-copy-default-value"] = labels[:default]
+      button["data-copy-copied-value"] = labels[:copied]
+      button["type"] = "button"
+      button["data-action"] = "click->copy#copy"
+      button["class"] = @style_config.copyable_classes[:button]
+      button.content = labels[:default]
+
+      pre["data-copy-target"] = "code"
+      pre.remove_attribute("class")
+
+      wrapper.add_child(button)
+      wrapper.add_child(pre.clone)
+      pre.replace(wrapper)
+    end
+
+    doc.to_html
+  end
+
 
   def extract_language(class_attr)
     class_attr.to_s[%r{language-(\w+)}, 1]

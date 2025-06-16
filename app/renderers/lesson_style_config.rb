@@ -36,4 +36,18 @@ class LessonStyleConfig
       output: "Output"
     }
   end
+
+  def self.copyable_classes
+    {
+      wrapper: "copy-wrapper position-relative mb-3",
+      button: "copy-button btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+    }
+  end
+
+  def self.copyable_labels
+    {
+      default: "Copy",
+      copied: "Copied"
+    }
+  end
 end
