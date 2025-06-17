@@ -12,7 +12,7 @@
 
 puts "Seeding courses and lesson assignments..."
 
-intro_onboarding_course = Course.find_or_create_by(
+onboarding_course = Course.find_or_create_by(
   title: "Onboarding",
   description: <<~DESCRIPTION
     This course provides a comprehensive introduction to essential tools and practices for effective communication, time management, and collaborative software development. You will learn how to navigate digital platforms, engage in professional interactions, manage projects using agile methodologies, and maintain robust cybersecurity practices.
@@ -39,16 +39,16 @@ onboarding_slugs = [
 onboarding_slugs.each_with_index do |slug, index|
   lesson = Lesson.find_by(slug: slug)
   if lesson
-    CourseLesson.find_or_create_by!(course: intro_onboarding_course, lesson: lesson) do |cl|
+    CourseLesson.find_or_create_by!(course: onboarding_course, lesson: lesson) do |cl|
       cl.position = index
     end
-    puts "Added #{lesson.slug} to #{intro_onboarding_course.title}"
+    puts "Added #{lesson.slug} to #{onboarding_course.title}"
   else
     puts "⚠️ Lesson not found: #{slug}"
   end
 end
 
-intro_html_css_course = Course.find_or_create_by(
+html_css_course = Course.find_or_create_by(
   title: "HTML & CSS",
   description: <<~DESCRIPTION
     This course provides an extensive overview of HTML and CSS, starting with fundamental concepts and advancing to more complex topics such as layout systems, responsive design, and deployment. You will learn how to structure web pages, style them with CSS, and eventually deploy a project online.
@@ -70,49 +70,53 @@ html_css_slugs = [
 html_css_slugs.each_with_index do |slug, index|
   lesson = Lesson.find_by(slug: slug)
   if lesson
-    CourseLesson.find_or_create_by!(course: intro_html_css_course, lesson: lesson) do |cl|
+    CourseLesson.find_or_create_by!(course: html_css_course, lesson: lesson) do |cl|
       cl.position = index
     end
-    puts "Added #{lesson.slug} to #{intro_html_css_course.title}"
+    puts "Added #{lesson.slug} to #{html_css_course.title}"
   else
     puts "⚠️ Lesson not found: #{slug}"
   end
 end
 
-data_structures_and_algorithms_course = Course.find_or_create_by(
-  title: "Data Structures, Algorithms, and Acing Coding Interviews",
+github_workflow_course = Course.find_or_create_by(
+  title: "GitHub Workflow",
   description: <<~DESCRIPTION
-    This course focuses on fundamental data structures and algorithms, as well as techniques for acing coding interviews.
-    You will practice solving common algorithmic problems and learn strategies to approach and solve these problems effectively.
-    By the end of this module, you will be able to: Understand and implement common data structures, Solve algorithmic problems using efficient techniques, Prepare for technical coding interviews, Demonstrate problem-solving skills and algorithmic thinking.
+    This course provides an in-depth exploration of GitHub as a key tool for version control, collaboration, and project management in software development.
+    Students will learn to set up their GitHub profiles, use Git commands for tracking changes, and collaborate effectively through branching, merging, and pull requests.
+    The course also covers the basics of GitHub project boards for organizing work and introduces CI/CD with GitHub Actions to automate testing and deployment.
+
+    ## Learning Objectives:
+
+    - Set up and customize a GitHub profile to establish an online developer presence.
+    - Understand and implement Git version control for tracking and managing changes to code.
+    - Use Git commands via the command line to commit, push, branch, and merge code effectively.
+    - Collaborate with teams by reviewing code and submitting pull requests for shared projects.
+    - Organize and track project tasks using GitHub Project Boards.
+    - Automate testing and deployment processes using GitHub Actions for CI/CD pipelines.
   DESCRIPTION
 )
 
-data_structures_and_algorithms_slugs = [
-  "ruby-data-structures-algorithms-intro",
-  "ruby-data-structures-algorithms-two-sum",
-  "ruby-data-structures-algorithms-most-frequent-element-in-array",
-  "ruby-data-structures-algorithms-longest-consecutive-sequence",
-  "ruby-data-structures-algorithms-balanced-parentheses",
-  "ruby-data-structures-algorithms-palindrome",
-  "ruby-data-structures-algorithms-climbing-stairs",
-  "ruby-data-structures-algorithms-kth-largest-element",
-  "ruby-data-structures-algorithms-first-unique-character-in-string",
-  "ruby-data-structures-algorithms-find-height-of-binary-tree",
-  "ruby-data-structures-algorithms-reverse-linked-list"
+github_workflow_slugs = [
+  "setup-github-profile",
+  # TODO: git gui, git cli, commit, push, branch, merge
+  "code-review",
+  "issues-branching-kanban",
+  "continuous-integration-continuous-deployment"
 ]
 
-data_structures_and_algorithms_slugs.each_with_index do |slug, index|
+github_workflow_slugs.each_with_index do |slug, index|
   lesson = Lesson.find_by(slug: slug)
   if lesson
-    CourseLesson.find_or_create_by!(course: data_structures_and_algorithms_course, lesson: lesson) do |cl|
+    CourseLesson.find_or_create_by!(course: github_workflow_course, lesson: lesson) do |cl|
       cl.position = index
     end
-    puts "Added #{lesson.slug} to #{data_structures_and_algorithms_course.title}"
+    puts "Added #{lesson.slug} to #{github_workflow_course.title}"
   else
     puts "⚠️ Lesson not found: #{slug}"
   end
 end
+
 
 capstone_course = Course.find_or_create_by(
   title: "Capstone Project",
@@ -157,6 +161,41 @@ capstone_slugs.each_with_index do |slug, index|
   end
 end
 
+data_structures_and_algorithms_course = Course.find_or_create_by(
+  title: "Data Structures, Algorithms, and Acing Coding Interviews",
+  description: <<~DESCRIPTION
+    This course focuses on fundamental data structures and algorithms, as well as techniques for acing coding interviews.
+    You will practice solving common algorithmic problems and learn strategies to approach and solve these problems effectively.
+    By the end of this module, you will be able to: Understand and implement common data structures, Solve algorithmic problems using efficient techniques, Prepare for technical coding interviews, Demonstrate problem-solving skills and algorithmic thinking.
+  DESCRIPTION
+)
+
+data_structures_and_algorithms_slugs = [
+  "ruby-data-structures-algorithms-intro",
+  "ruby-data-structures-algorithms-two-sum",
+  "ruby-data-structures-algorithms-most-frequent-element-in-array",
+  "ruby-data-structures-algorithms-longest-consecutive-sequence",
+  "ruby-data-structures-algorithms-balanced-parentheses",
+  "ruby-data-structures-algorithms-palindrome",
+  "ruby-data-structures-algorithms-climbing-stairs",
+  "ruby-data-structures-algorithms-kth-largest-element",
+  "ruby-data-structures-algorithms-first-unique-character-in-string",
+  "ruby-data-structures-algorithms-find-height-of-binary-tree",
+  "ruby-data-structures-algorithms-reverse-linked-list"
+]
+
+data_structures_and_algorithms_slugs.each_with_index do |slug, index|
+  lesson = Lesson.find_by(slug: slug)
+  if lesson
+    CourseLesson.find_or_create_by!(course: data_structures_and_algorithms_course, lesson: lesson) do |cl|
+      cl.position = index
+    end
+    puts "Added #{lesson.slug} to #{data_structures_and_algorithms_course.title}"
+  else
+    puts "⚠️ Lesson not found: #{slug}"
+  end
+end
+
 # TODO: VS Code & Terminal Essentials
 # TODO: Ruby
 # TODO: Writing Our Own Programs
@@ -164,7 +203,6 @@ end
 # TODO: HTTP Requests & APIs
 # TODO: Web Apps
 # TODO: Database Architecture
-# TODO: GitHub Workflow
 # TODO: Full Stack Web Apps
 # TODO: Industrial
 # TODO: Bridge
