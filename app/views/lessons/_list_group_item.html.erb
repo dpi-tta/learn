@@ -3,5 +3,4 @@
     <h5 class="mb-1"><%= lesson.title %></h5>
     <small><%= time_ago_in_words(lesson.updated_at) %> ago</small>
   </div>
-  <p class="mb-1"><%= lesson.description&.truncate_words(25) %></p>
 <% end %>
