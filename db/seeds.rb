@@ -26,8 +26,11 @@ onboarding_course = Course.find_or_create_by(
 )
 
 onboarding_slugs = [
+  # TODO: orientation (submitting issues, how to approach lessons etc.)
+  # TODO: asking questions
   "join-the-chat",
   "setup-your-email",
+  "setup-your-calendar",
   "setup-github-profile",
   "setup-til-blog", # or "keeping-a-learning-journal" — adjust if needed
   "daily-stand-ups-and-agile-ceremonies",
@@ -35,18 +38,6 @@ onboarding_slugs = [
   "setup-a-password-manager",
   "setup-your-internal-profile" # optional
 ]
-
-onboarding_slugs.each_with_index do |slug, index|
-  lesson = Lesson.find_by(slug: slug)
-  if lesson
-    CourseLesson.find_or_create_by!(course: onboarding_course, lesson: lesson) do |cl|
-      cl.position = index
-    end
-    puts "Added #{lesson.slug} to #{onboarding_course.title}"
-  else
-    puts "⚠️ Lesson not found: #{slug}"
-  end
-end
 
 html_css_course = Course.find_or_create_by(
   title: "HTML & CSS",
@@ -67,17 +58,30 @@ html_css_slugs = [
   "domain-names"
 ]
 
-html_css_slugs.each_with_index do |slug, index|
-  lesson = Lesson.find_by(slug: slug)
-  if lesson
-    CourseLesson.find_or_create_by!(course: html_css_course, lesson: lesson) do |cl|
-      cl.position = index
-    end
-    puts "Added #{lesson.slug} to #{html_css_course.title}"
-  else
-    puts "⚠️ Lesson not found: #{slug}"
-  end
-end
+# TODO: Writing Our Own Programs course
+writing_our_own_programs_course = Course.find_or_create_by(
+  title: "Writing our own programs",
+  description: <<~DESCRIPTION
+  This course is designed to build on your fundamentals of Ruby programming, focusing on practical skills and real-world applications. You will learn how to write, run, and debug Ruby programs, use Ruby gems, and employ proper coding style and testing techniques.
+
+  ## Learning Objectives:
+
+  - Write and execute Ruby programs in a real development environment.
+  - Implement debugging techniques to identify and fix errors in Ruby code.
+  - Apply proper coding styles and conventions in Ruby to create readable and maintainable code.
+  - Use Ruby gems to enhance functionality and leverage existing code.
+  - Write and run tests using MiniTest to ensure code reliability and quality.
+  - Create a command-line interface (CLI) Ruby project.
+  DESCRIPTION
+)
+
+writing_our_own_programs_slugs = [
+  # codespaces for ruby programs
+  "ruby-debugging-tips",
+  "ruby-style-basics",
+  "minitest",
+  "command-line-interface-cli-project"
+]
 
 github_workflow_course = Course.find_or_create_by(
   title: "GitHub Workflow",
@@ -104,19 +108,6 @@ github_workflow_slugs = [
   "issues-branching-kanban",
   "continuous-integration-continuous-deployment"
 ]
-
-github_workflow_slugs.each_with_index do |slug, index|
-  lesson = Lesson.find_by(slug: slug)
-  if lesson
-    CourseLesson.find_or_create_by!(course: github_workflow_course, lesson: lesson) do |cl|
-      cl.position = index
-    end
-    puts "Added #{lesson.slug} to #{github_workflow_course.title}"
-  else
-    puts "⚠️ Lesson not found: #{slug}"
-  end
-end
-
 
 capstone_course = Course.find_or_create_by(
   title: "Capstone Project",
@@ -149,17 +140,97 @@ capstone_slugs = [
   "how-to-get-your-first-5-users"
 ]
 
-capstone_slugs.each_with_index do |slug, index|
-  lesson = Lesson.find_by(slug: slug)
-  if lesson
-    CourseLesson.find_or_create_by!(course: capstone_course, lesson: lesson) do |cl|
-      cl.position = index
-    end
-    puts "Added #{lesson.slug} to #{capstone_course.title}"
-  else
-    puts "⚠️ Lesson not found: #{slug}"
-  end
-end
+patterns_of_enterprise_applications_course = Course.find_or_create_by(
+  title: "Patterns of Enterprise Applications: Design, Architecture, and Best Practices",
+  description: <<~DESCRIPTION
+    This course delves into the essential design patterns, architectural principles, and best practices for building scalable and maintainable enterprise applications. Students will learn to simplify complex systems through service objects, embrace domain-driven design for tackling business logic, and craft clean, human-readable code. Additionally, the course explores modular programming, component-based view templates, and event-driven architectures to improve code organization, reusability, and scalability in large applications.
+
+    ## Learning Objectives:
+
+    - Understand key design patterns and architectural principles for building enterprise-level applications.
+    - Simplify application logic and enhance code reusability through service objects.
+    - Embrace complexity using domain-driven design to better align code with business requirements.
+    - Write clean, readable, and maintainable code that is intuitive for other developers to understand.
+    - Organize code effectively using modules and the DRY (Don’t Repeat Yourself) principle to reduce redundancy.
+    - Implement component-based view templates to create reusable, maintainable front-end architecture.
+    - Scale applications efficiently using event-driven architectures to handle complex, asynchronous workflows.
+  DESCRIPTION
+)
+
+patterns_of_enterprise_applications_slugs = [
+  "patterns-of-enterprise-application-architecture-intro",
+  "service-objects",
+  "domain-driven-design",
+  "clean-code",
+  "writing-code-for-humans",
+  "rails-concerns",
+  "component-based-view-templates",
+  "rails-pub-sub-pattern"
+]
+
+extra_topics_course = Course.find_or_create_by(
+  title: "Extra Topics",
+  description: <<~DESCRIPTION
+    This course expands on foundational software development concepts, diving deeper into advanced topics such as security, API integrations, performance optimization, and mobile-friendly design.
+    Through practical exercises and real-world applications, students will enhance their skills in managing complex Rails applications, organizing JavaScript code, ensuring quality through testing, and integrating third-party services like maps and charts.
+    The course also covers best practices for securing credentials, deploying applications, and improving accessibility, SEO, and user experience.
+
+    ## Learning Objectives:
+
+    - Implement style guides, linters, and semantic HTML to ensure code quality, readability, and accessibility.
+    - Create more efficient Rails applications by nesting routes and attributes, implementing background jobs, and optimizing performance.
+    - Securely manage credentials, including GitHub sign-in with Devise OmniAuth and encrypted credentials.
+    - Integrate third-party services such as Mapbox, Google Maps, ChartKick, and APIs like OpenAI into Rails applications.
+    - Organize and enhance JavaScript functionality using Stimulus and object-oriented JavaScript techniques.
+    - Automate tasks like sample data loading, web scraping, and data export with rake tasks and CSV management.
+    - Perform quality assurance and testing with tools like RSpec, ensuring robust and bug-free applications.
+    - Deploy and monitor Rails applications on platforms like Render while applying best practices for scalability and security.
+    - Optimize applications for mobile devices.
+    - Integrate email and messaging services for user communication.
+  DESCRIPTION
+)
+
+extra_topics_slugs = [
+  "setting-up-a-development-environment",
+  "style-guides-linters",
+  "rails-nested-routes",
+  "rails-nested-attributes",
+  "how-to-write-a-good-readme",
+  "rails-organizing-js-code",
+  "js-stimulus",
+  "rails-security",
+  # TODO: oauth
+  # ENV variables + codespace credentials
+  "rails-encrypted-credentials",
+  "mapbox",
+  "charts-graphs-and-data-visualizations",
+  "building-for-mobile",
+  # TODO: sample data rake task
+  # TODO: Loading/Exporting data (CSV, JSON, etc.)
+  # TODO: web scraping
+  "pagination",
+  # TODO: searching, filtering, ransack, pg_search, typeahead
+  "rails-performance",
+  "background-jobs", # TODO: show how to run in render free tier
+  "rails-qa-testing",
+  "testing-with-rspec",
+  "monitoring-your-application",
+  "rails-admin",
+  "rails-business-analytics",
+  "semantic-html-and-accessibility",
+  "search-engine-optimization",
+  "artificial-intelligence-overview",
+  # TODO: open ai api request
+  # TODO: chat gpt cli
+  # TODO: deploy rails app to render
+  "domain-names",
+  "rails-active-storage",
+  # TODO: translation and i18n
+  "email",
+  # TODO: SMS
+  "rails-building-apis"
+  # TODO: rich text editors
+]
 
 data_structures_and_algorithms_course = Course.find_or_create_by(
   title: "Data Structures, Algorithms, and Acing Coding Interviews",
@@ -184,26 +255,46 @@ data_structures_and_algorithms_slugs = [
   "ruby-data-structures-algorithms-reverse-linked-list"
 ]
 
-data_structures_and_algorithms_slugs.each_with_index do |slug, index|
-  lesson = Lesson.find_by(slug: slug)
-  if lesson
-    CourseLesson.find_or_create_by!(course: data_structures_and_algorithms_course, lesson: lesson) do |cl|
-      cl.position = index
+curricula = [
+  { course: onboarding_course, slugs: onboarding_slugs },
+  { course: html_css_course, slugs: html_css_slugs },
+  { course: writing_our_own_programs_course, slugs: writing_our_own_programs_slugs },
+  { course: github_workflow_course, slugs: github_workflow_slugs },
+  { course: capstone_course, slugs: capstone_slugs },
+  { course: extra_topics_course, slugs: extra_topics_slugs },
+  { course: patterns_of_enterprise_applications_course, slugs: patterns_of_enterprise_applications_slugs },
+  { course: data_structures_and_algorithms_course, slugs: data_structures_and_algorithms_slugs }
+]
+
+curricula.each do |curriculum|
+  curriculum[:slugs].each_with_index do |slug, index|
+    lesson = Lesson.find_by(slug: slug)
+    if lesson
+      CourseLesson.find_or_create_by!(course: curriculum[:course], lesson: lesson) do |cl|
+        cl.position = index
+      end
+      puts "Added #{lesson.slug} to #{curriculum[:course].title}"
+    else
+      puts "⚠️ Lesson not found: #{slug}"
     end
-    puts "Added #{lesson.slug} to #{data_structures_and_algorithms_course.title}"
-  else
-    puts "⚠️ Lesson not found: #{slug}"
   end
 end
 
 # TODO: VS Code & Terminal Essentials
 # TODO: Ruby
-# TODO: Writing Our Own Programs
+#   - our-own-classes-level-up
+#   - ruby-gym-bank-account
 # TODO: Interviewing
 # TODO: HTTP Requests & APIs
 # TODO: Web Apps
+#   - html-css-erb-style-basics
 # TODO: Database Architecture
+#   - database-architecture-records-and-relationships
+#   - database-architecture-offer-right
 # TODO: Full Stack Web Apps
+#   - debugging
+#   - rails-migrations
+#   - reading-documentation-newsletters
 # TODO: Industrial
 # TODO: Bridge
 
