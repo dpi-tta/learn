@@ -54,9 +54,25 @@ html_css_course = Course.find_or_create_by(
 
 html_css_slugs = [
   "html-css-basics",
+  # TODO: scrimba, html/css courses
   "github-codespaces-vscode",
+  # TODO: portfolio
+  # TODO: Code Review
+  # TODO: Deploy to Render (or GitHub Pages)
   "domain-names"
+  # TODO: HTML/CSS Reference and Resources
+  # TODO: Design
 ]
+
+# TODO: VS Code & Terminal Essentials
+#   - TODO: vs code, integrated development environment
+#   - TODO: terminal tips and tricks
+#   - TODO: mac tips
+#   - TODO: windows tips
+# TODO: Ruby
+#   - our-own-classes-level-up
+#   - ruby-gym-bank-account
+#   - ruby-gym-todo-list
 
 # TODO: Writing Our Own Programs course
 writing_our_own_programs_course = Course.find_or_create_by(
@@ -83,6 +99,18 @@ writing_our_own_programs_slugs = [
   "command-line-interface-cli-project"
 ]
 
+# TODO: Interviewing
+#   - technical-interview-prep
+#   - behavioral-interview-prep
+
+# TODO: HTTP Requests & APIs
+# TODO: Web Apps
+#   - html-css-erb-style-basics
+
+# TODO: Database Architecture
+#   - database-architecture-records-and-relationships
+#   - database-architecture-offer-right
+
 github_workflow_course = Course.find_or_create_by(
   title: "GitHub Workflow",
   description: <<~DESCRIPTION
@@ -108,6 +136,15 @@ github_workflow_slugs = [
   "issues-branching-kanban",
   "continuous-integration-continuous-deployment"
 ]
+
+# TODO: Full Stack Web Apps
+#   - debugging
+#   - rails-migrations
+#   - reading-documentation-newsletters
+
+# TODO: Industrial
+
+# TODO: Bridge
 
 capstone_course = Course.find_or_create_by(
   title: "Capstone Project",
@@ -279,23 +316,5 @@ curricula.each do |curriculum|
     end
   end
 end
-
-# TODO: VS Code & Terminal Essentials
-# TODO: Ruby
-#   - our-own-classes-level-up
-#   - ruby-gym-bank-account
-# TODO: Interviewing
-# TODO: HTTP Requests & APIs
-# TODO: Web Apps
-#   - html-css-erb-style-basics
-# TODO: Database Architecture
-#   - database-architecture-records-and-relationships
-#   - database-architecture-offer-right
-# TODO: Full Stack Web Apps
-#   - debugging
-#   - rails-migrations
-#   - reading-documentation-newsletters
-# TODO: Industrial
-# TODO: Bridge
 
 puts "✅ Done seeding courses and lessons."
