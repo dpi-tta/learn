@@ -27,15 +27,15 @@ onboarding_course = Course.find_or_create_by(
 
 onboarding_slugs = [
   # TODO: orientation (submitting issues, how to approach lessons etc.)
-  # TODO: asking questions
   "join-the-chat",
+  "asking-questions",
   "setup-your-email",
   "setup-your-calendar",
+  "setup-a-password-manager",
+  "daily-stand-ups-and-agile-ceremonies",
   "setup-github-profile",
   "setup-til-blog", # or "keeping-a-learning-journal" — adjust if needed
-  "daily-stand-ups-and-agile-ceremonies",
   "taking-notes",
-  "setup-a-password-manager",
   "setup-your-internal-profile" # optional
 ]
 
