@@ -26,7 +26,7 @@ onboarding_course = Course.find_or_create_by(
 )
 
 onboarding_slugs = [
-  # TODO: orientation (submitting issues, how to approach lessons etc.)
+  # TODO: orientation (video, submitting issues, how to approach lessons etc.)
   "join-the-chat",
   "asking-questions",
   "setup-your-email",
@@ -69,10 +69,45 @@ html_css_slugs = [
 #   - TODO: terminal tips and tricks
 #   - TODO: mac tips
 #   - TODO: windows tips
-# TODO: Ruby
-#   - our-own-classes-level-up
-#   - ruby-gym-bank-account
-#   - ruby-gym-todo-list
+
+ruby_course = Course.find_or_create_by(
+  title: "Ruby",
+  description: <<~DESCRIPTION
+    This course provides an introduction to Object Oriented Programming (OOP) with Ruby.
+    It covers the basics of Ruby (syntax, data types, methods, conditionals, loops, and creating classes).
+    By the end you will be able to write your own robust Ruby programs.
+
+    ## Learning Objectives
+    - Understand the benefits of Object Oriented Programming
+    - Understand the basic syntax of Ruby
+    - Learn the fundamental building blocks of object oriented programming (Variable, String, Integer, Float, Date, Array, Printing, Conditionals, Loops, Hash, Enumerables, and Classes)
+    - Utilize the fundamental building blocks to solve challenges in the Ruby Gym
+  DESCRIPTION
+)
+
+# NOTE: create projects to practice
+ruby_slugs = [
+  # TODO: why
+  # TODO: syntax, variables, printing (make the invisible visible)
+  # TODO: string
+  # TODO: integer
+  # TODO: float
+  # TODO: date
+  # TODO: array
+  # TODO: string interpolation and printing
+  # TODO: conditionals
+  # TODO: loops
+  # TODO: each
+  # TODO: hash
+  "ruby-enumerables",
+  # TODO: classes
+  "our-own-classes-level-up",
+  # TODO: references, docs, newsletter and more practice (eg codecademy, exercism)
+  # NOTE: may just use project for the "gym"
+  "ruby-gym-bank-account",
+  "ruby-gym-todo-list"
+]
+
 
 # TODO: Writing Our Own Programs course
 writing_our_own_programs_course = Course.find_or_create_by(
@@ -295,6 +330,7 @@ data_structures_and_algorithms_slugs = [
 curricula = [
   { course: onboarding_course, slugs: onboarding_slugs },
   { course: html_css_course, slugs: html_css_slugs },
+  { course: ruby_course, slugs: ruby_slugs },
   { course: writing_our_own_programs_course, slugs: writing_our_own_programs_slugs },
   { course: github_workflow_course, slugs: github_workflow_slugs },
   { course: capstone_course, slugs: capstone_slugs },
