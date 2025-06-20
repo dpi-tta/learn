@@ -8,4 +8,8 @@ class Lesson < ApplicationRecord
   def to_param
     [ id, title.parameterize ].join("-")
   end
+
+  def to_s
+    title
+  end
 end

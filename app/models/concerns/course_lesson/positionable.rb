@@ -10,6 +10,18 @@ module CourseLesson::Positionable
     before_validation :assign_position, on: :create
   end
 
+  def next
+    siblings = course.course_lessons.order(:position)
+    index = siblings.index(self)
+    siblings[index + 1] if index
+  end
+
+  def previous
+    siblings = course.course_lessons.order(:position)
+    index = siblings.index(self)
+    siblings[index - 1] if index && index > 0
+  end
+
   private
 
   def assign_position

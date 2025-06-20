@@ -1,0 +1,20 @@
+
+<% if course_lesson %>
+  <% previous_lesson = course_lesson.previous %>
+  <% next_lesson = course_lesson.next %>
+
+  <nav aria-label="Lesson navigation" class="my-5">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <%= 'disabled' unless previous_lesson %>">
+        <% if previous_lesson %>
+          <%= link_to "← #{previous_lesson.lesson.title}", lesson_path(previous_lesson.lesson, course_id: previous_lesson.course.id), class: "page-link" %>
+        <% end %>
+      </li>
+      <li class="page-item <%= 'disabled' unless next_lesson %>">
+        <% if next_lesson %>
+          <%= link_to "#{next_lesson.lesson.title} →", lesson_path(next_lesson.lesson, course_id: next_lesson.course.id), class: "page-link" %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+<% end %>

@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[ show edit update destroy ]
+  before_action :set_course_lesson, only: %i[ show ]
 
   # GET /lessons or /lessons.json
   def index
@@ -8,15 +9,29 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
+    @breadcrumbs = []
+    @breadcrumbs << { content: @course.to_s, href: course_path(@course) } if @course.present?
+    @breadcrumbs << { content: "Lessons", href: lessons_path } unless @course.present?
+    @breadcrumbs << { content: @lesson.to_s }
   end
 
   # GET /lessons/new
   def new
     @lesson = Lesson.new
+
+    @breadcrumbs = [
+      { content: "Lessons", href: lessons_path },
+      { content: "New" }
+    ]
   end
 
   # GET /lessons/1/edit
   def edit
+    @breadcrumbs = [
+      { content: "Lessons", href: lessons_path },
+      { content: @lesson.to_s, href: lesson_path(@lesson) },
+      { content: "Edit" }
+    ]
   end
 
   # POST /lessons or /lessons.json
@@ -58,13 +73,19 @@ class LessonsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lesson
-      @lesson = Lesson.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def lesson_params
-      params.expect(lesson: [ :title, :description, :content, :github_repository_url, :github_repository_branch ])
+  def set_lesson
+    @lesson = Lesson.find(params.expect(:id))
+  end
+
+  def set_course_lesson
+    if params[:course_id].present?
+      @course = Course.find(params[:course_id])
+      @course_lesson = CourseLesson.find_by(lesson: @lesson, course: @course)
     end
+  end
+
+  def lesson_params
+    params.expect(lesson: [ :title, :description, :content, :github_repository_url, :github_repository_branch ])
+  end
 end

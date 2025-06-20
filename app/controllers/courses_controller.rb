@@ -8,15 +8,28 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    @breadcrumbs = [
+      { content: "Courses", href: courses_path },
+      { content: @course.to_s }
+    ]
   end
 
   # GET /courses/new
   def new
     @course = Course.new
+    @breadcrumbs = [
+      { content: "Courses", href: courses_path },
+      { content: "New" }
+    ]
   end
 
   # GET /courses/1/edit
   def edit
+    @breadcrumbs = [
+      { content: "Courses", href: courses_path },
+      { content: @course.to_s, href: course_path(@course) },
+      { content: "Edit" }
+    ]
   end
 
   # POST /courses or /courses.json

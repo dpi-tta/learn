@@ -1,4 +1,5 @@
-<%= link_to lesson, class: "list-group-item list-group-item-action" do %>
+<!-- app/views/lesson/_list_group_item.html.erb -->
+<%= link_to lesson_path(lesson, course_id: @course&.id), class: "list-group-item list-group-item-action" do %>
   <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1"><%= lesson.title %></h5>
   </div>
