@@ -56,6 +56,7 @@ html_css_slugs = [
   "html-css-basics",
   # TODO: scrimba, html/css courses
   "github-codespaces-vscode",
+  "portfolio",
   # TODO: portfolio
   # TODO: Code Review
   # TODO: Deploy to Render (or GitHub Pages)
