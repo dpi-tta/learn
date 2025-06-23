@@ -4,9 +4,9 @@ class LessonStyleConfig
       "h1" => "display-4 mt-5",
       "h2" => "display-5 mt-5",
       "h3" => "display-6 mt-5",
-      "h4" => "mb-2",
-      "h5" => "mb-1",
-      "h6" => "mb-1"
+      "h4" => "my-4",
+      "h5" => "my-4",
+      "h6" => "my-4"
     }
   end
 
