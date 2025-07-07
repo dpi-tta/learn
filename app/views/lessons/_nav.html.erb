@@ -3,7 +3,7 @@
   <% previous_lesson = course_lesson.previous %>
   <% next_lesson = course_lesson.next %>
 
-  <nav aria-label="Lesson navigation" class="my-5">
+  <nav aria-label="Lesson navigation">
     <ul class="pagination justify-content-center">
       <li class="page-item <%= 'disabled' unless previous_lesson %>">
         <% if previous_lesson %>
