@@ -1,16 +1,9 @@
 <div id="<%= dom_id lesson %>" class="lesson">
-  
-  <%# TODO: move to lesson/_action ??? %>
-  <div class="d-flex align-items-center">
-    <div class="me-auto">
-      <%= render "github_link", lesson: lesson %>
-    </div>
-    <%= link_to edit_lesson_path(lesson), class: "btn btn-outline-primary me-1" do %>
-      <i class="bi bi-pencil"></i>
-    <% end %>
-    <%= button_to lesson, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
-      <i class="bi bi-trash"></i>
-    <% end %>
+
+  <div class="d-flex justify-content-between align-items-center flex-wrap">
+    <%= render "shared/breadcrumbs" %>
+    <%= render "nav",  course_lesson: @course_lesson %>
+    <%= render "actions", lesson: lesson %>
   </div>
 
   <% unless @lesson.github_repository_url.present? %>

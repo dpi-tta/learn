@@ -1,8 +1,9 @@
-<% content_for :title, @lesson.title %>
+<% content_for :title, @course_lesson || @lesson %>
+
 <div class="container my-2">
   <%= render @lesson %>
+  <div class="my-5 d-flex justify-content-center">
+    <%= render "nav",  course_lesson: @course_lesson %>
+  </div>
 </div>
 
-<div class="my-5">
-  <%= render "nav",  course_lesson: @course_lesson %>
-</div>

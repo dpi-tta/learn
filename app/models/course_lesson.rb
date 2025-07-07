@@ -5,4 +5,8 @@ class CourseLesson < ApplicationRecord
   belongs_to :lesson
 
   validates :lesson_id, uniqueness: { scope: :course_id }
+
+  def to_s
+    "#{course} | #{lesson}"
+  end
 end

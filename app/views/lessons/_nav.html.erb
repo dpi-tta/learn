@@ -4,7 +4,7 @@
   <% next_lesson = course_lesson.next %>
 
   <nav aria-label="Lesson navigation">
-    <ul class="pagination justify-content-center">
+    <ul class="pagination">
       <li class="page-item <%= 'disabled' unless previous_lesson %>">
         <% if previous_lesson %>
           <%= link_to "← #{previous_lesson.lesson.title}", lesson_path(previous_lesson.lesson, course_id: previous_lesson.course.id), class: "page-link" %>
