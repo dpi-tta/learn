@@ -4,15 +4,25 @@
   <% next_lesson = course_lesson.next %>
 
   <nav aria-label="Lesson navigation">
-    <ul class="pagination">
-      <li class="page-item <%= 'disabled' unless previous_lesson %>">
+    <ul class="pagination d-flex flex-wrap">
+      <li class="my-1 flex-grow-1 page-item <%= 'disabled' unless previous_lesson %>">
         <% if previous_lesson %>
-          <%= link_to "← #{previous_lesson.lesson.title}", lesson_path(previous_lesson.lesson, course_id: previous_lesson.course.id), class: "page-link" %>
+          <%= link_to lesson_path(previous_lesson.lesson, course_id: previous_lesson.course.id), class: "page-link" do %>
+            <div class="d-flex justify-content-center">
+              <i class="bi bi-arrow-left me-2"></i>
+              <%= previous_lesson.lesson.title %>
+            </div>
+          <% end %>
         <% end %>
       </li>
-      <li class="page-item <%= 'disabled' unless next_lesson %>">
+      <li class="my-1 flex-grow-1 page-item <%= 'disabled' unless next_lesson %>">
         <% if next_lesson %>
-          <%= link_to "#{next_lesson.lesson.title} →", lesson_path(next_lesson.lesson, course_id: next_lesson.course.id), class: "page-link" %>
+          <%= link_to lesson_path(next_lesson.lesson, course_id: next_lesson.course.id), class: "page-link" do %>
+            <div class="d-flex justify-content-center">
+              <%= next_lesson.lesson.title %>
+              <i class="bi bi-arrow-right ms-2"></i>
+            </div>
+          <% end %>
         <% end %>
       </li>
     </ul>

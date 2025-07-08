@@ -1,11 +1,5 @@
 <div id="<%= dom_id lesson %>" class="lesson">
-
-  <div class="d-flex justify-content-between align-items-start flex-wrap">
-    <%= render "shared/breadcrumbs" %>
-    <%= render "nav",  course_lesson: @course_lesson %>
-    <%= render "actions", lesson: lesson %>
-  </div>
-
+  <%= render "actions", lesson: lesson %>
   <% unless @lesson.github_repository_url.present? %>
     <h1><%= @lesson.title %></h1>
     <p><%= @lesson.description %></p>
