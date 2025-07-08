@@ -75,7 +75,9 @@ class LessonsController < ApplicationController
   private
 
   def set_lesson
-    @lesson = Lesson.find(params.expect(:id))
+    @lesson = Lesson.find_by_id(params.expect(:id)) || Lesson.find_by_slug(params.expect(:id))
+
+    raise ActiveRecord::RecordNotFound unless @lesson.present?
   end
 
   def set_course_lesson
