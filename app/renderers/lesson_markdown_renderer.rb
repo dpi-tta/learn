@@ -11,6 +11,7 @@ class LessonMarkdownRenderer
       input: "GFM"
     ).to_html
 
+    html = inject_table_of_contents(html)
     html = add_header_anchors(html)
     html = transform_repl_blocks(html)
     html = transform_copyable_blocks(html)
@@ -142,6 +143,23 @@ class LessonMarkdownRenderer
     row.add_child(run_btn)
     row.add_child(reset_btn)
     row
+  end
+
+  # Inject table of contents before first h2
+  def inject_table_of_contents(html)
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+
+    toc_html = LessonTableOfContentsRenderer.new(@text).render
+    return html if toc_html.blank?
+
+    first_h2 = doc.at_css("h2")
+    if first_h2
+      first_h2.add_previous_sibling(toc_html)
+    else
+      doc.children.first.add_previous_sibling(toc_html)
+    end
+
+    doc.to_html
   end
 
   def transform_copyable_blocks(html)
