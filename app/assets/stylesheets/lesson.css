@@ -29,6 +29,17 @@
   opacity: 1;
 }
 
+.lesson img,
+.lesson table {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.lesson table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 /* REPL Container */
 .repl-container {
   border: 1px solid #ddd;
