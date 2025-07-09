@@ -15,7 +15,7 @@ class LessonStyleConfig
   end
 
   def self.heading_link_icon
-    '<i class="bi bi-link-45deg"></i>'
+    '<i class="bi bi-hash"></i>'
   end
 
   def self.repl_classes
