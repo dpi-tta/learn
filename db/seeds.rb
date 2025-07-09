@@ -43,7 +43,7 @@ html_css_course = Course.find_or_create_by(
   title: "HTML & CSS",
   description: <<~DESCRIPTION
     This course provides an extensive overview of HTML and CSS, starting with fundamental concepts and advancing to more complex topics such as layout systems, responsive design, and deployment. You will learn how to structure web pages, style them with CSS, and eventually deploy a project online.
-    ## Learning Obiectives:
+    ## Learning Objectives:
     - Understand and apply the basic structure of HTML documents.
     - Utilize CSS to style web pages and create visually appealing layouts.
     - Implement responsive design principles to ensure web pages are mobile-friendly.
