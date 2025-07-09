@@ -342,7 +342,10 @@ curricula = [
 
 curricula.each do |curriculum|
   curriculum[:slugs].each_with_index do |slug, index|
-    lesson = Lesson.find_or_create_by!(slug: slug)
+    lesson = Lesson.find_or_create_by!(
+      slug: slug,
+      github_repository_url: "https://github.com/dpi-tta-lessons/" + slug
+    )
     if lesson
       CourseLesson.find_or_create_by!(course: curriculum[:course], lesson: lesson) do |cl|
         cl.position = index
