@@ -15,6 +15,7 @@ class LessonMarkdownRenderer
     html = add_header_anchors(html)
     html = transform_repl_blocks(html)
     html = transform_copyable_blocks(html)
+    html = stylize_lead_paragraph(html)
 
     html.html_safe
   end
@@ -157,6 +158,21 @@ class LessonMarkdownRenderer
       first_h2.add_previous_sibling(toc_html)
     else
       doc.children.first.add_previous_sibling(toc_html)
+    end
+
+    doc.to_html
+  end
+
+  def stylize_lead_paragraph(html)
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+
+    h1 = doc.at_css("h1")
+    if h1
+      # Find the next element sibling (skipping text nodes)
+      node = h1.next_element
+      if node&.name == "p"
+        node["class"] = [ node["class"], "display-6" ].compact.join(" ")
+      end
     end
 
     doc.to_html
