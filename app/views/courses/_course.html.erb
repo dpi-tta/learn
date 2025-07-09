@@ -14,5 +14,8 @@
 
   <p><%= render_markdown @course.description %></p>
 
-  <%= render "lessons/list_group", lessons: course.lessons %>
+  <section id="lessons">
+    <h2>Lessons:</h2>
+    <%= render "course_lessons/list_group", course_lessons: course.course_lessons %>
+  </section>
 </div>
