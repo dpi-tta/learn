@@ -13,10 +13,11 @@ class LessonTableOfContentsRenderer
       <button
         class="btn btn-outline-secondary mb-3"
         type="button"
+        data-controller="table-of-contents-toggle"
         data-bs-toggle="collapse"
         data-bs-target="#table-of-contents"
         aria-expanded="false">
-        On this page <i class="bi bi-arrows-vertical"></i>
+        On this page <i class="bi bi-arrows-vertical" data-table-of-contents-toggle-target="icon"></i>
       </button>
 
       <nav class="table-of-contents" id="table-of-contents" class="collapse border rounded bg-light p-4">
