@@ -25,9 +25,7 @@ class Lesson::MarkdownRenderer
 
   private
 
-  def add_header_anchors(html)
-    doc = Nokogiri::HTML::DocumentFragment.parse(html)
-
+  def add_header_anchors(doc)
     doc.css("h1, h2, h3, h4, h5, h6").each do |node|
       next unless node["id"]
       id = node["id"]
@@ -49,9 +47,7 @@ class Lesson::MarkdownRenderer
   end
 
   # Inject table of contents before first h2
-  def inject_table_of_contents(html)
-    doc = Nokogiri::HTML::DocumentFragment.parse(html)
-
+  def inject_table_of_contents(doc)
     table_of_contents_html = Lesson::TableOfContentsRenderer.new(@text).render
     return html if table_of_contents_html.blank?
 
@@ -65,18 +61,16 @@ class Lesson::MarkdownRenderer
     doc.to_html
   end
 
-  def stylize_lead_paragraph(html)
-    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+  def stylize_lead_paragraph(doc)
+    lead_class = @style_config.lead_paragraph_class
+    return unless lead_class
 
     h1 = doc.at_css("h1")
-    if h1
-      # Find the next element sibling (skipping text nodes)
-      node = h1.next_element
-      if node&.name == "p"
-        node["class"] = [ node["class"], "display-6" ].compact.join(" ")
-      end
-    end
+    return unless h1
 
-    doc.to_html
+    node = h1.next_element
+    if node&.name == "p"
+      node["class"] = [ node["class"], lead_class ].compact.join(" ")
+    end
   end
 end

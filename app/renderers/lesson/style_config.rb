@@ -18,6 +18,10 @@ class Lesson::StyleConfig
     '<i class="bi bi-hash"></i>'
   end
 
+  def self.lead_paragraph_class
+    "display-6"
+  end
+
   def self.repl_classes
     {
       container:   "repl-container",
