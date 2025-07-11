@@ -19,6 +19,7 @@ class Lesson::MarkdownRenderer
 
     Lesson::ReplRenderer.new(doc, style_config: @style_config).transform!
     Lesson::CopyableRenderer.new(doc, style_config: @style_config).transform!
+    Lesson::QuizRenderer.new(doc).transform!
 
     doc.to_html.html_safe
   end
