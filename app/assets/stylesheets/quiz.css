@@ -20,7 +20,7 @@
   padding: 0.75rem;
   margin-bottom: 0.5rem;
   transition: background-color 0.3s;
-  cursor: pointer; /* cursor for the entire block */
+  cursor: pointer;
 }
 
 .quiz-choice input[type="radio"] {
@@ -34,8 +34,6 @@
   align-items: center;
 }
 
-/* Feedback visibility is handled above with .quiz-question.attempted */
-
 .quiz-choice.is-correct {
   background-color: #d1e7dd;
   border-color: #198754;
@@ -44,4 +42,27 @@
 .quiz-choice.is-wrong {
   background-color: #f8d7da;
   border-color: #dc3545;
+}
+
+/* Dark mode support */
+[data-bs-theme="dark"] .quiz-choice {
+  border-color: #555;
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+[data-bs-theme="dark"] .quiz-feedback {
+  color: #aaa;
+}
+
+[data-bs-theme="dark"] .quiz-choice.is-correct {
+  background-color: #305943;
+  border-color: #2ea86e;
+  color: #d1f2e0;
+}
+
+[data-bs-theme="dark"] .quiz-choice.is-wrong {
+  background-color: #5a2a2a;
+  border-color: #e06060;
+  color: #ffd6d6;
 }
