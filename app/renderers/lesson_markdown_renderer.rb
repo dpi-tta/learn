@@ -150,14 +150,14 @@ class LessonMarkdownRenderer
   def inject_table_of_contents(html)
     doc = Nokogiri::HTML::DocumentFragment.parse(html)
 
-    toc_html = LessonTableOfContentsRenderer.new(@text).render
-    return html if toc_html.blank?
+    table_of_contents_html = LessonTableOfContentsRenderer.new(@text).render
+    return html if table_of_contents_html.blank?
 
     first_h2 = doc.at_css("h2")
     if first_h2
-      first_h2.add_previous_sibling(toc_html)
+      first_h2.add_previous_sibling(table_of_contents_html)
     else
-      doc.children.first.add_previous_sibling(toc_html)
+      doc.children.first.add_previous_sibling(table_of_contents_html)
     end
 
     doc.to_html

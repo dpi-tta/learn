@@ -1,0 +1,44 @@
+aside {
+  border-left: 4px solid #ccc;
+  background: #f9f9f9;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+aside.tip {
+  border-color: #0d6efd;
+  background: #e9f3ff;
+}
+
+aside.warning {
+  border-color: #ffc107;
+  background: #fff9e6;
+}
+
+aside.danger {
+  border-color: #dc3545;
+  background: #ffe6e9;
+}
+
+/* DARK MODE SUPPORT */
+[data-bs-theme="dark"] aside {
+  background: #2a2a2a;
+  border-left-color: #555;
+  color: #ddd;
+}
+
+[data-bs-theme="dark"] aside.tip {
+  background: #002b47;
+  border-left-color: #66b3ff;
+}
+
+[data-bs-theme="dark"] aside.warning {
+  background: #3d2e00;
+  border-left-color: #ffc107;
+}
+
+[data-bs-theme="dark"] aside.danger {
+  background: #3b1a1e;
+  border-left-color: #f2757d;
+}

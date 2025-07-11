@@ -26,7 +26,7 @@ class LessonStyleConfig
       editor:      "repl-editor",
       action_row:  "mt-3 d-flex align-items-center justify-content-between",
       run_btn:     "repl-run btn btn-primary px-5",
-      reset_btn:   "repl-reset btn btn-link text-black ms-2"
+      reset_btn:   "repl-reset btn btn-link ms-2"
     }
   end
 

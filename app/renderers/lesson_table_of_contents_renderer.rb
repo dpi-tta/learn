@@ -7,7 +7,7 @@ class LessonTableOfContentsRenderer
     headings = extract_headings_from_markdown
     return "" if headings.empty?
 
-    toc_list = build_toc_list(headings)
+    table_of_contents_list = build_table_of_contents_list(headings)
 
     <<~HTML
       <button
@@ -19,13 +19,12 @@ class LessonTableOfContentsRenderer
         On this page <i class="bi bi-arrows-vertical"></i>
       </button>
 
-      <div id="table-of-contents" class="collapse border rounded bg-light p-4">
-        <nav class="toc" data-controller="toc" data-toc-content-value="#lesson">
-          <ul class="nav flex-column small">
-            #{toc_list}
-          </ul>
-        </nav>
-      </div>
+      <nav class="table-of-contents" id="table-of-contents" class="collapse border rounded bg-light p-4">
+        <h2 class="visually-hidden">Table of Contents</h2>
+        <ul class="nav flex-column small">
+          #{table_of_contents_list}
+        </ul>
+      </nav>
     HTML
   end
 
@@ -39,9 +38,9 @@ class LessonTableOfContentsRenderer
     end.compact
   end
 
-  def build_toc_list(headings)
+  def build_table_of_contents_list(headings)
     headings.map do |h|
-      %(<li class="nav-item ms-#{(h[:level] - 2) * 2}"><a class="nav-link p-0" href="##{h[:id]}">#{h[:text]}</a></li>)
+      %(<li class="nav-item ms-#{(h[:level] - 2) * 2}"><a class="nav-link" href="##{h[:id]}">#{h[:text]}</a></li>)
     end.join("\n")
   end
 end
