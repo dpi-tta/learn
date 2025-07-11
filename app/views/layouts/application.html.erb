@@ -33,13 +33,17 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flash" %>
-    <div class="container d-flex justify-content-between align-items-center flex-wrap">
-      <%= render "shared/breadcrumbs" %>
-      <%= render "lessons/nav",  course_lesson: @course_lesson %>
-    </div>
-    <%= yield %>
+    <header>
+      <%= render "shared/navbar" %>
+      <%= render "shared/flash" %>
+      <div class="container d-flex justify-content-between align-items-center flex-wrap">
+        <%= render "shared/breadcrumbs" %>
+        <%= render "lessons/nav",  course_lesson: @course_lesson %>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
     <%= render "shared/footer" %>
   </body>
 </html>

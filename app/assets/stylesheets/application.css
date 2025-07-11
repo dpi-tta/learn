@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+main {
+  height: 100%;
+  height: fit-content;
+  margin-bottom: 5rem;
+}
