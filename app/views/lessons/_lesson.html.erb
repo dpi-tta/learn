@@ -1,4 +1,4 @@
-<div id="<%= dom_id lesson %>" class="lesson">
+<div id="<%= dom_id lesson %>" class="lesson" data-controller="prism">
   <%= render "actions", lesson: lesson %>
   <% unless @lesson.github_repository_url.present? %>
     <h1><%= @lesson.title %></h1>
