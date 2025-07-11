@@ -1,4 +1,4 @@
-class LessonStyleConfig
+class Lesson::StyleConfig
   def self.heading_classes
     {
       "h1" => "display-4 mt-5",

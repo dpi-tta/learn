@@ -1,4 +1,4 @@
-class LessonTableOfContentsRenderer
+class Lesson::TableOfContentsRenderer
   def initialize(markdown_text)
     @markdown_text = markdown_text
   end

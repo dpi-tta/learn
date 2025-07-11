@@ -10,6 +10,6 @@ module MarkdownHelper
   end
 
   def render_lesson_markdown(text)
-    LessonMarkdownRenderer.new(text).render
+    Lesson::MarkdownRenderer.new(text).render
   end
 end
