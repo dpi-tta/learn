@@ -20,7 +20,7 @@ class Lesson::TableOfContentsRenderer
         On this page <i class="bi bi-arrows-vertical" data-table-of-contents-toggle-target="icon"></i>
       </button>
 
-      <nav id="table-of-contents" class="table-of-contents collapse border rounded bg-light p-4">
+      <nav id="table-of-contents" class="table-of-contents collapse">
         <h2 class="visually-hidden">Table of Contents</h2>
         <ul class="nav flex-column small">
           #{table_of_contents_list}
