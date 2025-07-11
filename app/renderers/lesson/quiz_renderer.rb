@@ -6,9 +6,64 @@ class Lesson::QuizRenderer
   def transform!
     transform_choose_best!
     transform_free_text!
+    transform_choose_all!
   end
 
   private
+
+  def transform_choose_all!
+    @doc.css("ul.choose_all").each do |ul|
+      metadata = {
+        id: ul["id"],
+        title: ul["title"],
+        points: ul["points"],
+        answer: ul["answer"]
+      }.compact
+
+      answers = JSON.parse(metadata[:answer]) rescue []
+
+      # First <li> is the question
+      question_li = ul.at_xpath("./li[1]")
+      question_text = question_li&.inner_html
+      question_li.remove
+
+      container = Nokogiri::XML::Node.new("div", @doc)
+      container["class"] = "quiz-question choose-all"
+      container["data-controller"] = "quiz"
+      container["data-quiz-id"] = metadata[:id]
+      container["data-quiz-title"] = metadata[:title]
+      container["data-quiz-points"] = metadata[:points]
+      container["data-quiz-answer"] = answers.map(&:to_s).to_json
+
+      question_h3 = Nokogiri::XML::Node.new("h3", @doc)
+      question_h3.inner_html = question_text
+      container.add_child(question_h3)
+
+      # Only process direct <li> children of the top-level <ul>
+      ul.xpath("./li").each_with_index do |li, index|
+        # Extract any nested <ul><li> as feedback and remove it
+        feedback_node = li.at("ul > li")
+        li.search("ul").remove # remove the nested ul
+
+        choice = Nokogiri::XML::Node.new("div", @doc)
+        choice["class"] = "quiz-choice"
+        choice["data-quiz-choice-index"] = (index + 1).to_s
+        choice["data-quiz-target"] = "choice"
+
+        choice.inner_html = <<~HTML
+          <label data-controller="quiz">
+            <input type="checkbox" name="#{metadata[:id]}[]" value="#{index + 1}" class="me-2">
+            #{li.inner_html.strip}
+          </label>
+          #{feedback_node ? "<div class='quiz-feedback'>#{feedback_node.inner_html.strip}</div>" : ""}
+        HTML
+
+        container.add_child(choice)
+      end
+
+      ul.replace(container)
+    end
+  end
 
   def transform_choose_best!
     @doc.css("ul.choose_best").each do |ul|
@@ -91,16 +146,16 @@ class Lesson::QuizRenderer
       label["class"] = "h3"
       label.inner_html = question_li.inner_html
 
-      input = Nokogiri::XML::Node.new("input", @doc)
-      input["type"] = "text"
-      input["name"] = metadata[:id]
-      input["id"] = metadata[:id]
-      input["placeholder"] = metadata[:placeholder]
-      input["class"] = "form-control"
-      input["data-action"] = "blur->quiz#validateFreeText"
+      textarea = Nokogiri::XML::Node.new("textarea", @doc)
+      textarea["type"] = "text"
+      textarea["name"] = metadata[:id]
+      textarea["id"] = metadata[:id]
+      textarea["placeholder"] = metadata[:placeholder]
+      textarea["class"] = "form-control"
+      textarea["data-action"] = "blur->quiz#validateFreeText"
 
       container.add_child(label)
-      container.add_child(input)
+      container.add_child(textarea)
 
       ul.replace(container)
     end
@@ -111,7 +166,7 @@ class Lesson::QuizRenderer
       id: text[/#(\w+)/, 1],
       title: text[/title="(.*?)"/, 1],
       points: text[/points="(\d+)"/, 1],
-      answer: text[/answer="(\d+)"/, 1]
+      answer: text[/answer="(.*?)"/, 1]
     }.compact
   end
 end
