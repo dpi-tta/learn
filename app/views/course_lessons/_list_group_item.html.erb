@@ -1,6 +1,5 @@
 <!-- app/views/course_lessons/_list_group_item.html.erb -->
-<li class="list-group-item list-group-item-action d-flex">
-  <%= link_to lesson_path(course_lesson.lesson, course_id: @course&.id), class: "ms-2 link-secondary" do %>
-    <h3><%= course_lesson.lesson.title %></h3>
-  <% end %>
-</li>
+<%= link_to lesson_path(course_lesson.lesson, course_id: @course&.id),
+            class: "list-group-item list-group-item-action d-flex align-items-center gap-3 px-4 py-3 text-decoration-none" do %>
+  <h5 class="mb-0 flex-grow-1"><%= course_lesson.lesson.title %></h5>
+<% end %>
