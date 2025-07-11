@@ -41,7 +41,7 @@ class Lesson::TableOfContentsRenderer
 
   def build_table_of_contents_list(headings)
     headings.map do |h|
-      %(<li class="nav-item ms-#{(h[:level] - 2) * 2}"><a class="nav-link" href="##{h[:id]}">#{h[:text]}</a></li>)
+      %(<li style="margin-left: #{(h[:level]) * 0.5}rem;" class="nav-item"><a class="nav-link" href="##{h[:id]}">#{h[:text]}</a></li>)
     end.join("\n")
   end
 end
