@@ -48,18 +48,17 @@ html_css_course = Course.find_or_create_by(
     - Utilize CSS to style web pages and create visually appealing layouts.
     - Implement responsive design principles to ensure web pages are mobile-friendly.
     - Use version control with GitHub to manage and collaborate on code.
-    - Deploy a static website to the hosting platform Render.
+    - Paricipate in a code review
+    - Deploy a static website to a cloud hosting platform.
   DESCRIPTION
 )
 
 html_css_slugs = [
   "html-css-basics",
-  # TODO: scrimba, html/css courses
   "github-codespaces-vscode",
   "portfolio",
-  # TODO: portfolio
-  # TODO: Code Review
-  # TODO: Deploy to Render (or GitHub Pages)
+  "portfolio-page-code-review",
+  "render-deploy-static-site",
   "domain-names"
   # TODO: HTML/CSS Reference and Resources
   # TODO: Design
