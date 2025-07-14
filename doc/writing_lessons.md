@@ -105,3 +105,48 @@ Use `<aside>` elements to include supplementary content—like tips, context, de
 You can add video tags like this:
 
 `<video src="video.mp4" width="480" autoplay loop muted playsinline></video>`
+
+## Quiz Questions
+
+You can write quiz questions in markdown lessons. These provide trainees with feedback during lessons, however, there is no grade passback or penalty for incorrect submissions.
+
+### Choose Best
+
+Here is an example of a choose best question:
+
+```md
+- Why is it important to set up an email client on multiple devices?
+- It makes it easier to monitor incoming emails.
+  - Correct! Monitoring emails across devices ensures you don't miss important communications.
+- It is required by most companies.
+  - Not quite. While not always required, it's a best practice for staying organized.
+- It improves the battery life of your devices.
+  - Not correct. Setting up email on multiple devices does not impact battery life.
+{: .choose_best #importance title="Importance of Setting Up Email" answer="1"}
+```
+
+### Choose All
+
+Here is an example of a choose all question:
+
+```md
+- What should you do to ensure you receive important emails promptly?
+- Check your email once a week.
+  - Not correct. Checking emails frequently is essential for timely responses.
+- Enable notifications for new emails.
+  - Correct! Notifications help you stay informed about new messages.
+- Use only one email client.
+  - Not correct. Using multiple clients can enhance accessibility.
+- Check your email every morning.
+  - Correct! Checking your email is a great way to start the day.
+{: .choose_all #notifications title="Email Notifications" answer="[2,4]"}
+```
+
+### Free Text
+
+Here is an example free text question:
+
+```md
+- Submit your portfolio project code and have it reviewed by a peer. It should look something like `https://github.com/<username>/portfolio`.
+{: .free_text #submit_github_repository title="Submit GitHub Repository URL" placeholder="GitHub Repository URL" }
+```
