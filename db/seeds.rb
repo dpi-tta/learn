@@ -65,10 +65,27 @@ html_css_slugs = [
 ]
 
 # TODO: VS Code & Terminal Essentials
-#   - TODO: vs code, integrated development environment
-#   - TODO: terminal tips and tricks
-#   - TODO: mac tips
-#   - TODO: windows tips
+
+
+vs_code_and_terminal_essentials_course = Course.find_or_create_by(
+  title: "VS Code & Terminal Essentials",
+  description: <<~DESCRIPTION
+    This course is designed to help you master your developer workflow in Visual Studio Code (VS Code) while working in Codespaces. You'll learn the essential features of VS Code, explore powerful tips and keyboard shortcuts to boost efficiency, and pick up handy tricks to streamline your setup. By the end, you'll be equipped with practical skills to code faster and more effectively in any project.
+
+    ## Learning Objectives:
+    - Navigate the Visual Studio Code (VS Code) interface to enhance your productivity.
+    - Apply powerful keyboard shortcuts and editor tricks to accelerate your coding workflow.
+    - Master terminal commands to manage your development environment efficiently.
+    - Implement productivity tips tailored for macOS and Windows to optimize your setup.
+  DESCRIPTION
+)
+
+vs_code_and_terminal_essentials_slugs = [
+  # TODO: vs code, integrated development environment
+  # TODO: terminal tips and tricks
+  # TODO: mac tips
+  # TODO: windows tips
+]
 
 ruby_course = Course.find_or_create_by(
   title: "Ruby",
@@ -330,6 +347,7 @@ data_structures_and_algorithms_slugs = [
 curricula = [
   { course: onboarding_course, slugs: onboarding_slugs },
   { course: html_css_course, slugs: html_css_slugs },
+  { course: vs_code_and_terminal_essentials_course, slugs: vs_code_and_terminal_essentials_slugs },
   { course: ruby_course, slugs: ruby_slugs },
   { course: writing_our_own_programs_course, slugs: writing_our_own_programs_slugs },
   { course: github_workflow_course, slugs: github_workflow_slugs },
