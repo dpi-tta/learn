@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json

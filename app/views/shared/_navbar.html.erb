@@ -11,9 +11,18 @@
         <li class="nav-item">
           <%= link_to 'Courses', courses_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item me-auto">
           <%= link_to 'Lessons', lessons_path, class: "nav-link" %>
         </li>
+        <% if Current.user %>
+          <li class="nav-item">
+            <%= button_to 'Sign Out', session_path, class: "nav-link", method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
       <div class="ms-auto">
         <%= render "shared/theme_toggle" %>
