@@ -76,7 +76,7 @@ html_css_slugs = [
   "html-css-basics",
   "github-codespaces-vscode",
   "portfolio",
-  "portfolio-page-code-review",
+  "portfolio-code-review",
   "render-deploy-static-site",
   "domain-names"
   # TODO: HTML/CSS Reference and Resources
