@@ -11,7 +11,7 @@
         <li class="nav-item">
           <%= link_to 'Courses', courses_path, class: "nav-link" %>
         </li>
-        <li class="nav-item me-auto">
+        <li class="nav-item">
           <%= link_to 'Lessons', lessons_path, class: "nav-link" %>
         </li>
         <% if Current.user %>
@@ -24,6 +24,9 @@
           </li>
         <% end %>
       </ul>
+      <div class="py-2">
+        <%# This div is hacky, but provides some padding when in mobile view %>
+      </div>
       <div class="ms-auto">
         <%= render "shared/theme_toggle" %>
       </div>
