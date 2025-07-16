@@ -10,6 +10,25 @@
 
 # NOTE: run `ruby script/import_lessons_from_github.rb` before seeding
 
+puts "Seeding users..."
+
+user_attributes_list = [
+  { email: "ihera2@uillinois.edu", admin: true }
+]
+
+user_attributes_list.each do |attributes|
+  user = User.find_or_create_by!(email_address: attributes[:email]) do |u|
+    u.admin = attributes[:admin]
+    u.password = Rails.env.production? ? SecureRandom.alphanumeric(16) : "password"
+  end
+
+  if user.persisted?
+    puts "✅ Added #{user.email_address}, admin: #{user.admin?}"
+  else
+    puts "⚠️ Unable to create user: #{attributes}"
+  end
+end
+
 puts "Seeding courses and lesson assignments..."
 
 onboarding_course = Course.find_or_create_by(

@@ -2,10 +2,14 @@
   <div class="me-auto">
     <%= render "github_link", lesson: lesson %>
   </div>
-  <%= link_to edit_lesson_path(lesson), class: "btn btn-outline-primary me-1" do %>
-    <i class="bi bi-pencil"></i>
+  <% if policy(lesson).edit? %>
+    <%= link_to edit_lesson_path(lesson), class: "btn btn-outline-primary me-1" do %>
+      <i class="bi bi-pencil"></i>
+    <% end %>
   <% end %>
-  <%= button_to lesson, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
-    <i class="bi bi-trash"></i>
+  <% if policy(lesson).destroy? %>
+    <%= button_to lesson, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
   <% end %>
 </div>
