@@ -5,8 +5,10 @@
       <div class="d-flex align-items-center justify-content-end">
         <h1 class="h6 mb-0 me-auto">Courses</h1>
         <div>
-          <%= link_to new_course_path, class: 'btn btn-outline-primary me-2' do %>
-            <i class="bi bi-plus fs-6"></i>
+          <% if policy(Course).new? %>
+            <%= link_to new_course_path, class: 'btn btn-outline-primary me-2' do %>
+              <i class="bi bi-plus fs-6"></i>
+            <% end %>
           <% end %>
         </div>
       </div>

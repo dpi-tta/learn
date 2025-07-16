@@ -2,6 +2,7 @@ class LessonsController < ApplicationController
   allow_unauthenticated_access only: %i[ index show ]
   before_action :set_lesson, only: %i[ show edit update destroy ]
   before_action :set_course_lesson, only: %i[ show ]
+  before_action { authorize @lesson || Lesson }
 
   # GET /lessons or /lessons.json
   def index

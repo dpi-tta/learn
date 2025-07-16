@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   allow_unauthenticated_access only: %i[ index show ]
   before_action :set_course, only: %i[ show edit update destroy ]
+  before_action { authorize @course || Course }
 
   # GET /courses or /courses.json
   def index
