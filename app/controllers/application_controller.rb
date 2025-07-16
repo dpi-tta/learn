@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include Authorization
   include HttpBasicAuthenticatable
-  include Pundit::Authorization
-
-  def pundit_user
-    Current.user
-  end
 end
