@@ -83,9 +83,6 @@ html_css_slugs = [
   # TODO: Design
 ]
 
-# TODO: VS Code & Terminal Essentials
-
-
 vs_code_and_terminal_essentials_course = Course.find_or_create_by(
   title: "VS Code & Terminal Essentials",
   description: <<~DESCRIPTION
@@ -101,7 +98,7 @@ vs_code_and_terminal_essentials_course = Course.find_or_create_by(
 
 vs_code_and_terminal_essentials_slugs = [
   # TODO: vs code, integrated development environment
-  # TODO: terminal tips and tricks
+  "terminal-basics"
   # TODO: mac tips
   # TODO: windows tips
 ]
