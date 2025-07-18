@@ -114,7 +114,7 @@ ruby_course = Course.find_or_create_by(
     - Understand the benefits of Object Oriented Programming
     - Understand the basic syntax of Ruby
     - Learn the fundamental building blocks of object oriented programming (Variable, String, Integer, Float, Date, Array, Printing, Conditionals, Loops, Hash, Enumerables, and Classes)
-    - Utilize the fundamental building blocks to solve challenges in the Ruby Gym
+    - Utilize the fundamental building blocks to solve challenges in the Ruby Dojo
   DESCRIPTION
 )
 
@@ -137,8 +137,8 @@ ruby_slugs = [
   "our-own-classes-level-up",
   # TODO: references, docs, newsletter and more practice (eg codecademy, exercism)
   # NOTE: may just use project for the "gym"
-  "ruby-gym-bank-account",
-  "ruby-gym-todo-list"
+  "ruby-dojo-bank-account",
+  "ruby-dojo-todo-list"
 ]
 
 
