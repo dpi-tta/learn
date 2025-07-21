@@ -2,6 +2,7 @@ module Webhooks
   class GithubController < ApplicationController
     allow_unauthenticated_access
     skip_before_action :verify_authenticity_token
+    skip_before_action :http_basic_authenticate, if: -> { Rails.env.production? } # HttpBasicAuthenticatable
 
     def create
       request_body = request.raw_post
