@@ -97,8 +97,8 @@ vs_code_and_terminal_essentials_course = Course.find_or_create_by(
 )
 
 vs_code_and_terminal_essentials_slugs = [
-  "terminal-basics",
-  "vs-code-basics"
+  "vs-code-basics",
+  "terminal-basics"
   # TODO: mac tips
   # TODO: windows tips
 ]
