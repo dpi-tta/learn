@@ -3,6 +3,12 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.hosts = [
+    /.*\.ngrok-free\.app/, # Allow requests from subdomains like `8468ca9992a8.ngrok-free.app`
+    "localhost:3000",
+    "0.0.0.0:3000"
+  ]
+
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 

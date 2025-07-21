@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   draw(:health)
   draw(:pwa)
+  draw(:webhooks)
 end
