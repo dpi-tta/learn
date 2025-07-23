@@ -172,8 +172,37 @@ writing_our_own_programs_slugs = [
 #   - behavioral-interview-prep
 
 # TODO: HTTP Requests & APIs
-# TODO: Web Apps
-#   - html-css-erb-style-basics
+#   - TODO: what is http?
+#   - TODO: APIs
+#   - TODO: credentials
+#   - TODO: putting it all together
+#   - TODO: chat gpt cli
+
+web_apps_course = Course.find_or_create_by(
+  title: "Web Applications",
+  description: <<~DESCRIPTION
+    This course introduces the core principles of building interactive web applications. You'll learn how to respond to HTTP requests, define routes, use view templates for dynamic content, work with user input, and connect to external APIs. By the end, you'll develop and deploy your own web application.
+
+    ## Learning Objectives
+
+    - Grasp the fundamentals of routing and managing HTTP requests and responses.
+    - Use view templates to separate presentation from application logic.
+    - Handle form submissions and process user input effectively.
+    - Connect and interact with third-party APIs.
+    - Build and deploy a Sinatra-based web application to a cloud hosting platform.
+  DESCRIPTION
+)
+
+web_apps_slugs = [
+  #   - TODO: respond to http requests with a simple web app
+  #   - TODO: view templates
+  #   - html-css-erb-style-basics
+  #   - TODO: links + routes
+  #   - TODO: refactor: dynamic routes
+  #   - TODO: query strings and forms
+  #   - TODO: web app project
+  #     - writing-functional-requirements
+]
 
 # TODO: Database Architecture
 #   - database-architecture-records-and-relationships
@@ -205,14 +234,30 @@ github_workflow_slugs = [
   "continuous-integration-continuous-deployment"
 ]
 
-# TODO: Full Stack Web Apps
-#   - debugging
-#   - rails-migrations
-#   - reading-documentation-newsletters
+full_stack_web_apps_course = Course.find_or_create_by(
+  title: "Full Stack Web Applications",
+  description: <<~DESCRIPTION
+    This course equips students with the essential tools, frameworks, and methodologies used in full stack web development. Through hands-on practice, students will gain experience working with database design and management, debugging workflows, and frameworks like Ruby on Rails and Bootstrap.
 
-# TODO: Industrial
+    ## Learning Objectives
 
-# TODO: Bridge
+    - Develop and debug full stack web applications using Ruby on Rails
+    - Build a responsive frontend using Bootstrap
+    - Apply the Model-View-Controller (MVC) pattern.
+    - Manage databases through migrations, ORM (Object-relational Mapping) queries, and SQL.
+    - Implement authentication and authorization.
+    - Refactor applications with helper and instance methods to improve clarity and structure.
+    - Leverage GitHub workflow and peer code review
+    - Use scripts, generators and scaffolding to streamline development.
+    - Integrate JavaScript to build dynamic user interfaces.
+  DESCRIPTION
+)
+
+full_stack_web_apps_slugs = [
+  "debugging",
+  "rails-migrations",
+  "reading-documentation-newsletters"
+]
 
 capstone_course = Course.find_or_create_by(
   title: "Capstone Project",
@@ -337,6 +382,8 @@ extra_topics_slugs = [
   # TODO: rich text editors
 ]
 
+# TODO: Bridge Course
+
 data_structures_and_algorithms_course = Course.find_or_create_by(
   title: "Data Structures, Algorithms, and Acing Coding Interviews",
   description: <<~DESCRIPTION
@@ -366,7 +413,9 @@ curricula = [
   { course: vs_code_and_terminal_essentials_course, slugs: vs_code_and_terminal_essentials_slugs },
   { course: ruby_course, slugs: ruby_slugs },
   { course: writing_our_own_programs_course, slugs: writing_our_own_programs_slugs },
+  { course: web_apps_course, slugs: web_apps_slugs },
   { course: github_workflow_course, slugs: github_workflow_slugs },
+  { course: full_stack_web_apps_course, slugs: full_stack_web_apps_slugs },
   { course: capstone_course, slugs: capstone_slugs },
   { course: extra_topics_course, slugs: extra_topics_slugs },
   { course: patterns_of_enterprise_applications_course, slugs: patterns_of_enterprise_applications_slugs },
