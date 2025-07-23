@@ -31,18 +31,21 @@ end
 
 puts "Seeding courses and lesson assignments..."
 
-onboarding_course = Course.find_or_create_by(
-  title: "Onboarding",
-  description: <<~DESCRIPTION
+onboarding_course = Course.find_or_create_by!(title: "Onboarding") do |course|
+  course.description = <<~DESCRIPTION
     This course provides a comprehensive introduction to essential tools and practices for effective communication, time management, and collaborative software development. You will learn how to navigate digital platforms, engage in professional interactions, manage projects using agile methodologies, and maintain robust cybersecurity practices.
-    ## Learning Objectives:
+
+    ## Learning Objectives
+
     - Navigate and utlize the content management and communication platforms effectively.
     - Implement best pracuces for proressional communication in virtual environments.
     - Use email and calendar tools to manage time and responsibilities efficiently.
     - Set up and maintain password managers to enhance digital security.
     - Participate in agile ceremonies to improve team collaboration and project management skills.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 onboarding_slugs = [
   # TODO: orientation (video, submitting issues, how to approach lessons etc.)
@@ -58,11 +61,12 @@ onboarding_slugs = [
   "setup-your-internal-profile" # optional
 ]
 
-html_css_course = Course.find_or_create_by(
-  title: "HTML & CSS",
-  description: <<~DESCRIPTION
+html_css_course = Course.find_or_create_by!(title: "HTML & CSS") do |course|
+  course.description = <<~DESCRIPTION
     This course provides an extensive overview of HTML and CSS, starting with fundamental concepts and advancing to more complex topics such as layout systems, responsive design, and deployment. You will learn how to structure web pages, style them with CSS, and eventually deploy a project online.
-    ## Learning Objectives:
+
+    ## Learning Objectives
+
     - Understand and apply the basic structure of HTML documents.
     - Utilize CSS to style web pages and create visually appealing layouts.
     - Implement responsive design principles to ensure web pages are mobile-friendly.
@@ -70,7 +74,9 @@ html_css_course = Course.find_or_create_by(
     - Paricipate in a code review
     - Deploy a static website to a cloud hosting platform.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 html_css_slugs = [
   "html-css-basics",
@@ -83,18 +89,20 @@ html_css_slugs = [
   # TODO: Design
 ]
 
-vs_code_and_terminal_essentials_course = Course.find_or_create_by(
-  title: "VS Code & Terminal Essentials",
-  description: <<~DESCRIPTION
+vs_code_and_terminal_essentials_course = Course.find_or_create_by!(title: "VS Code & Terminal Essentials") do |course|
+  course.description = <<~DESCRIPTION
     This course is designed to help you master your developer workflow in Visual Studio Code (VS Code) while working in Codespaces. You'll learn the essential features of VS Code, explore powerful tips and keyboard shortcuts to boost efficiency, and pick up handy tricks to streamline your setup. By the end, you'll be equipped with practical skills to code faster and more effectively in any project.
 
-    ## Learning Objectives:
+    ## Learning Objectives
+
     - Navigate the Visual Studio Code (VS Code) interface to enhance your productivity.
     - Apply powerful keyboard shortcuts and editor tricks to accelerate your coding workflow.
     - Master terminal commands to manage your development environment efficiently.
     - Implement productivity tips tailored for macOS and Windows to optimize your setup.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 vs_code_and_terminal_essentials_slugs = [
   "vs-code-basics",
@@ -103,9 +111,8 @@ vs_code_and_terminal_essentials_slugs = [
   # TODO: windows tips
 ]
 
-ruby_course = Course.find_or_create_by(
-  title: "Ruby",
-  description: <<~DESCRIPTION
+ruby_course = Course.find_or_create_by!(title: "Ruby") do |course|
+  course.description = <<~DESCRIPTION
     This course provides an introduction to Object Oriented Programming (OOP) with Ruby.
     It covers the basics of Ruby (syntax, data types, methods, conditionals, loops, and creating classes).
     By the end you will be able to write your own robust Ruby programs.
@@ -116,7 +123,9 @@ ruby_course = Course.find_or_create_by(
     - Learn the fundamental building blocks of object oriented programming (Variable, String, Integer, Float, Date, Array, Printing, Conditionals, Loops, Hash, Enumerables, and Classes)
     - Utilize the fundamental building blocks to solve challenges in the Ruby Dojo
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 # NOTE: create projects to practice
 ruby_slugs = [
@@ -143,21 +152,22 @@ ruby_slugs = [
 
 
 # TODO: Writing Our Own Programs course
-writing_our_own_programs_course = Course.find_or_create_by(
-  title: "Writing our own programs",
-  description: <<~DESCRIPTION
-  This course is designed to build on your fundamentals of Ruby programming, focusing on practical skills and real-world applications. You will learn how to write, run, and debug Ruby programs, use Ruby gems, and employ proper coding style and testing techniques.
+writing_our_own_programs_course = Course.find_or_create_by!(title: "Writing our own programs") do |course|
+  course.description = <<~DESCRIPTION
+    This course is designed to build on your fundamentals of Ruby programming, focusing on practical skills and real-world applications. You will learn how to write, run, and debug Ruby programs, use Ruby gems, and employ proper coding style and testing techniques.
 
-  ## Learning Objectives:
+    ## Learning Objectives:
 
-  - Write and execute Ruby programs in a real development environment.
-  - Implement debugging techniques to identify and fix errors in Ruby code.
-  - Apply proper coding styles and conventions in Ruby to create readable and maintainable code.
-  - Use Ruby gems to enhance functionality and leverage existing code.
-  - Write and run tests using MiniTest to ensure code reliability and quality.
-  - Create a command-line interface (CLI) Ruby project.
+    - Write and execute Ruby programs in a real development environment.
+    - Implement debugging techniques to identify and fix errors in Ruby code.
+    - Apply proper coding styles and conventions in Ruby to create readable and maintainable code.
+    - Use Ruby gems to enhance functionality and leverage existing code.
+    - Write and run tests using MiniTest to ensure code reliability and quality.
+    - Create a command-line interface (CLI) Ruby project.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 writing_our_own_programs_slugs = [
   # codespaces for ruby programs
@@ -178,9 +188,8 @@ writing_our_own_programs_slugs = [
 #   - TODO: putting it all together
 #   - TODO: chat gpt cli
 
-web_apps_course = Course.find_or_create_by(
-  title: "Web Applications",
-  description: <<~DESCRIPTION
+web_apps_course = Course.find_or_create_by!(title: "Web Applications") do |course|
+  course.description = <<~DESCRIPTION
     This course introduces the core principles of building interactive web applications. You'll learn how to respond to HTTP requests, define routes, use view templates for dynamic content, work with user input, and connect to external APIs. By the end, you'll develop and deploy your own web application.
 
     ## Learning Objectives
@@ -191,7 +200,9 @@ web_apps_course = Course.find_or_create_by(
     - Connect and interact with third-party APIs.
     - Build and deploy a Sinatra-based web application to a cloud hosting platform.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 web_apps_slugs = [
   #   - TODO: respond to http requests with a simple web app
@@ -208,9 +219,8 @@ web_apps_slugs = [
 #   - database-architecture-records-and-relationships
 #   - database-architecture-offer-right
 
-github_workflow_course = Course.find_or_create_by(
-  title: "GitHub Workflow",
-  description: <<~DESCRIPTION
+github_workflow_course = Course.find_or_create_by!(title: "GitHub Workflow") do |course|
+  course.description = <<~DESCRIPTION
     This course provides an in-depth exploration of GitHub as a key tool for version control, collaboration, and project management in software development.
     Students will learn to set up their GitHub profiles, use Git commands for tracking changes, and collaborate effectively through branching, merging, and pull requests.
     The course also covers the basics of GitHub project boards for organizing work and introduces CI/CD with GitHub Actions to automate testing and deployment.
@@ -224,7 +234,9 @@ github_workflow_course = Course.find_or_create_by(
     - Organize and track project tasks using GitHub Project Boards.
     - Automate testing and deployment processes using GitHub Actions for CI/CD pipelines.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 github_workflow_slugs = [
   "setup-github-profile",
@@ -234,9 +246,8 @@ github_workflow_slugs = [
   "continuous-integration-continuous-deployment"
 ]
 
-full_stack_web_apps_course = Course.find_or_create_by(
-  title: "Full Stack Web Applications",
-  description: <<~DESCRIPTION
+full_stack_web_apps_course = Course.find_or_create_by!(title: "Full Stack Web Applications") do |course|
+  course.description = <<~DESCRIPTION
     This course equips students with the essential tools, frameworks, and methodologies used in full stack web development. Through hands-on practice, students will gain experience working with database design and management, debugging workflows, and frameworks like Ruby on Rails and Bootstrap.
 
     ## Learning Objectives
@@ -251,17 +262,18 @@ full_stack_web_apps_course = Course.find_or_create_by(
     - Use scripts, generators and scaffolding to streamline development.
     - Integrate JavaScript to build dynamic user interfaces.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 full_stack_web_apps_slugs = [
   "debugging",
   "rails-migrations",
-  "reading-documentation-newsletters"
+  "reading-documentation-and-newsletters"
 ]
 
-capstone_course = Course.find_or_create_by(
-  title: "Capstone Project",
-  description: <<~DESCRIPTION
+capstone_course = Course.find_or_create_by!(title: "Capstone Project") do |course|
+  course.description = <<~DESCRIPTION
     This course is the culmination of your learning journey, where you will apply all the skills acquired throughout the program to design, build, and present your own software project.
     From ideation to deployment, you will learn how to conceptualize a project, write functional requirements, and bring your idea to life.
     The course guides you through noticing good ideas, writing a functional specification, coding, deploying, and preparing a professional presentation to showcase your project.
@@ -274,7 +286,9 @@ capstone_course = Course.find_or_create_by(
     - Deploy your application to a production environment.
     - Prepare and deliver a polished presentation of your project, showcasing its features and technical implementation.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 capstone_slugs = [
   "building-your-own-idea",
@@ -290,9 +304,8 @@ capstone_slugs = [
   "how-to-get-your-first-5-users"
 ]
 
-patterns_of_enterprise_applications_course = Course.find_or_create_by(
-  title: "Patterns of Enterprise Applications: Design, Architecture, and Best Practices",
-  description: <<~DESCRIPTION
+patterns_of_enterprise_applications_course = Course.find_or_create_by!(title: "Patterns of Enterprise Applications: Design, Architecture, and Best Practices") do |course|
+  course.description = <<~DESCRIPTION
     This course delves into the essential design patterns, architectural principles, and best practices for building scalable and maintainable enterprise applications. Students will learn to simplify complex systems through service objects, embrace domain-driven design for tackling business logic, and craft clean, human-readable code. Additionally, the course explores modular programming, component-based view templates, and event-driven architectures to improve code organization, reusability, and scalability in large applications.
 
     ## Learning Objectives:
@@ -305,7 +318,9 @@ patterns_of_enterprise_applications_course = Course.find_or_create_by(
     - Implement component-based view templates to create reusable, maintainable front-end architecture.
     - Scale applications efficiently using event-driven architectures to handle complex, asynchronous workflows.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 patterns_of_enterprise_applications_slugs = [
   "patterns-of-enterprise-application-architecture-intro",
@@ -318,9 +333,8 @@ patterns_of_enterprise_applications_slugs = [
   "rails-pub-sub-pattern"
 ]
 
-extra_topics_course = Course.find_or_create_by(
-  title: "Extra Topics",
-  description: <<~DESCRIPTION
+extra_topics_course = Course.find_or_create_by!(title: "Extra Topics") do |course|
+  course.description = <<~DESCRIPTION
     This course expands on foundational software development concepts, diving deeper into advanced topics such as security, API integrations, performance optimization, and mobile-friendly design.
     Through practical exercises and real-world applications, students will enhance their skills in managing complex Rails applications, organizing JavaScript code, ensuring quality through testing, and integrating third-party services like maps and charts.
     The course also covers best practices for securing credentials, deploying applications, and improving accessibility, SEO, and user experience.
@@ -338,7 +352,9 @@ extra_topics_course = Course.find_or_create_by(
     - Optimize applications for mobile devices.
     - Integrate email and messaging services for user communication.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 extra_topics_slugs = [
   "setting-up-a-development-environment",
@@ -384,14 +400,15 @@ extra_topics_slugs = [
 
 # TODO: Bridge Course
 
-data_structures_and_algorithms_course = Course.find_or_create_by(
-  title: "Data Structures, Algorithms, and Acing Coding Interviews",
-  description: <<~DESCRIPTION
+data_structures_and_algorithms_course = Course.find_or_create_by!(title: "Data Structures, Algorithms, and Acing Coding Interviews") do |course|
+  course.description = <<~DESCRIPTION
     This course focuses on fundamental data structures and algorithms, as well as techniques for acing coding interviews.
     You will practice solving common algorithmic problems and learn strategies to approach and solve these problems effectively.
     By the end of this module, you will be able to: Understand and implement common data structures, Solve algorithmic problems using efficient techniques, Prepare for technical coding interviews, Demonstrate problem-solving skills and algorithmic thinking.
   DESCRIPTION
-)
+
+  puts "Created course: #{course.title}"
+end
 
 data_structures_and_algorithms_slugs = [
   "ruby-data-structures-algorithms-intro",
@@ -431,8 +448,8 @@ curricula.each do |curriculum|
     if lesson
       CourseLesson.find_or_create_by!(course: curriculum[:course], lesson: lesson) do |cl|
         cl.position = index
+        puts "Added #{lesson.slug} to #{curriculum[:course].title}"
       end
-      puts "Added #{lesson.slug} to #{curriculum[:course].title}"
     else
       puts "⚠️ Lesson not found: #{slug}"
     end
