@@ -6,7 +6,16 @@ class LessonsController < ApplicationController
 
   # GET /lessons or /lessons.json
   def index
-    @lessons = Lesson.all
+    @lessons = if params[:q].present?
+      Lesson.search_by_title(params[:q]).limit(10)
+    else
+      Lesson.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /lessons/1 or /lessons/1.json

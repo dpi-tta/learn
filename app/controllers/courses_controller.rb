@@ -79,6 +79,10 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.expect(course: [ :title, :description, lesson_ids: [] ])
+    params.expect(course: [
+      :title,
+      :description,
+      course_lessons_attributes: [ [ :id, :lesson_id, :position, :_destroy ] ]
+    ])
   end
 end

@@ -21,18 +21,47 @@
     <%= form.textarea :description, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3" data-controller="course-lesson-selector">
     <label class="form-label">Lessons</label>
 
-    <% Lesson.order(:title).each do |lesson| %>
-      <div class="form-check">
-        <%= check_box_tag "course[lesson_ids][]", lesson.id, course.lesson_ids.include?(lesson.id), id: "lesson_#{lesson.id}", class: "form-check-input" %>
-        <%= label_tag "lesson_#{lesson.id}", lesson.title, class: "form-check-label" %>
-      </div>
-    <% end %>
+    <input type="search" class="form-control mb-3" placeholder="Search lessons..." data-course-lesson-selector-target="search" />
 
-    <!-- Include a hidden field to ensure an empty array is submitted if none are checked -->
-    <%= hidden_field_tag "course[lesson_ids][]", nil %>
+    <div data-course-lesson-selector-target="results"></div>
+
+    <div class="mt-4" data-course-lesson-selector-target="selected">
+      <% course.course_lessons.each do |course_lesson| %>
+        <div class="card mb-3 position-relative" data-lesson-id="<%= course_lesson.lesson_id %>">
+          <div class="card-body">
+
+            <!-- Hidden fields -->
+            <%= hidden_field_tag "course[course_lessons_attributes][][lesson_id]", course_lesson.lesson_id %>
+            <%= hidden_field_tag "course[course_lessons_attributes][][id]", course_lesson.id %>
+
+            <!-- Remove "×" button -->
+            <%= hidden_field_tag "course[course_lessons_attributes][][_destroy]", "false" %>
+            <button
+             class="btn-close position-absolute top-0 end-0 m-2"
+             aria-label="Remove"
+             data-action="course-lesson-selector#removeLesson"
+             type="button"
+            >
+            </button>
+
+            <!-- Lesson Title -->
+            <h5 class="card-title"><%= course_lesson.lesson.title %></h5>
+
+            <!-- Position Input -->
+            <div class="mb-2">
+              <%= label_tag nil, "Position", class: "form-label" %>
+              <%= text_field_tag "course[course_lessons_attributes][][position]", course_lesson.position, class: "form-control", placeholder: "Enter position" %>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+
+
+    </div>
   </div>
 
   <div>
