@@ -4,5 +4,13 @@
     <h1><%= @lesson.title %></h1>
     <p><%= @lesson.description %></p>
   <% end %>
-  <%= render_lesson_markdown(@lesson.content) %>
+  
+  <div class="row">
+    <div class="col-lg-9">
+      <%= Lesson::MarkdownRenderer.new(@lesson.content).render %>
+    </div>
+    <div class="col-lg-3 d-none d-lg-block">
+      <%= Lesson::TableOfContentsRenderer.new(@lesson.content).desktop_html.html_safe %>
+    </div>
+  </div>
 </div>

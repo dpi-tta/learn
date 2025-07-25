@@ -1,6 +1,6 @@
-// controllers/toc_toggle_controller.js
 import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="table-of-contents--toggle"
 export default class extends Controller {
   static targets = ["icon"]
 

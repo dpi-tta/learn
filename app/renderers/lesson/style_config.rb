@@ -19,7 +19,7 @@ class Lesson::StyleConfig
   end
 
   def self.lead_paragraph_class
-    "display-6"
+    "fs-5"
   end
 
   def self.repl_classes

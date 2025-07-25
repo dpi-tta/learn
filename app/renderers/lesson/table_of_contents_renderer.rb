@@ -1,29 +1,43 @@
 class Lesson::TableOfContentsRenderer
+  attr_reader :headings
+
   def initialize(markdown_text)
     @markdown_text = markdown_text
+    @headings = extract_headings_from_markdown
   end
 
-  def render
-    headings = extract_headings_from_markdown
+  def mobile_html
     return "" if headings.empty?
 
-    table_of_contents_list = build_table_of_contents_list(headings)
+    <<~HTML
+      <div class="d-lg-none mb-3" data-controller="table-of-contents--toggle">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#table-of-contents-mobile"
+          aria-expanded="false">
+          On this page <i class="bi bi-arrows-vertical" data-table-of-contents--toggle-target="icon"></i>
+        </button>
+
+        <nav id="table-of-contents-mobile" class="table-of-contents collapse">
+          <h2 class="visually-hidden">Table of Contents</h2>
+          <ul class="nav flex-column small">
+            #{build_list_items}
+          </ul>
+        </nav>
+      </div>
+    HTML
+  end
+
+  def desktop_html
+    return "" if headings.empty?
 
     <<~HTML
-      <button
-        class="btn btn-outline-secondary mb-3"
-        type="button"
-        data-controller="table-of-contents-toggle"
-        data-bs-toggle="collapse"
-        data-bs-target="#table-of-contents"
-        aria-expanded="false">
-        On this page <i class="bi bi-arrows-vertical" data-table-of-contents-toggle-target="icon"></i>
-      </button>
-
-      <nav id="table-of-contents" class="table-of-contents collapse">
-        <h2 class="visually-hidden">Table of Contents</h2>
-        <ul class="nav flex-column small">
-          #{table_of_contents_list}
+      <nav id="table-of-contents-desktop" class="table-of-contents table-of-contents-desktop d-none d-lg-block position-sticky mt-5" data-controller="table-of-contents--scrollspy">
+        <h6 class="text-muted">On this page</h6>
+        <ul class="nav flex-column small" data-table-of-contents--scrollspy-target="ul">
+          #{build_list_items}
         </ul>
       </nav>
     HTML
@@ -39,9 +53,10 @@ class Lesson::TableOfContentsRenderer
     end.compact
   end
 
-  def build_table_of_contents_list(headings)
+  def build_list_items
     headings.map do |h|
-      %(<li style="margin-left: #{(h[:level]) * 0.5}rem;" class="nav-item"><a class="nav-link" href="##{h[:id]}">#{h[:text]}</a></li>)
+      indent = (h[:level] - 2) * 1
+      %(<li class="nav-item ps-#{indent}"><a class="nav-link" href="##{h[:id]}">#{h[:text]}</a></li>)
     end.join("\n")
   end
 end

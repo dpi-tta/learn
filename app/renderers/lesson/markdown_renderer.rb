@@ -13,7 +13,7 @@ class Lesson::MarkdownRenderer
 
     doc = Nokogiri::HTML::DocumentFragment.parse(html)
 
-    inject_table_of_contents(doc)
+    inject_mobile_table_of_contents(doc)
     add_header_anchors(doc)
     stylize_lead_paragraph(doc)
 
@@ -47,19 +47,16 @@ class Lesson::MarkdownRenderer
     doc.to_html
   end
 
-  # Inject table of contents before first h2
-  def inject_table_of_contents(doc)
-    table_of_contents_html = Lesson::TableOfContentsRenderer.new(@text).render
-    return html if table_of_contents_html.blank?
+  def inject_mobile_table_of_contents(doc)
+    mobile_html = Lesson::TableOfContentsRenderer.new(@text).mobile_html
+    return if mobile_html.blank?
 
     first_h2 = doc.at_css("h2")
     if first_h2
-      first_h2.add_previous_sibling(table_of_contents_html)
+      first_h2.add_previous_sibling(mobile_html)
     else
-      doc.children.first.add_previous_sibling(table_of_contents_html)
+      doc.children.first.add_previous_sibling(mobile_html)
     end
-
-    doc.to_html
   end
 
   def stylize_lead_paragraph(doc)

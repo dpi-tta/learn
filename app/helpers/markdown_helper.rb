@@ -8,8 +8,4 @@ module MarkdownHelper
 
     html.html_safe
   end
-
-  def render_lesson_markdown(text)
-    Lesson::MarkdownRenderer.new(text).render
-  end
 end
