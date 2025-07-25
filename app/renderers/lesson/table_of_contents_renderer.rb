@@ -10,17 +10,18 @@ class Lesson::TableOfContentsRenderer
     return "" if headings.empty?
 
     <<~HTML
-      <div class="d-lg-none mb-3" data-controller="table-of-contents--toggle">
+      <div class="d-lg-none mb-3">
         <button
           class="btn btn-outline-secondary"
           type="button"
+          data-controller="table-of-contents--toggle"
           data-bs-toggle="collapse"
           data-bs-target="#table-of-contents-mobile"
           aria-expanded="false">
           On this page <i class="bi bi-arrows-vertical" data-table-of-contents--toggle-target="icon"></i>
         </button>
 
-        <nav id="table-of-contents-mobile" class="table-of-contents collapse">
+        <nav id="table-of-contents-mobile" class="table-of-contents mt-2 collapse">
           <h2 class="visually-hidden">Table of Contents</h2>
           <ul class="nav flex-column small">
             #{build_list_items}
