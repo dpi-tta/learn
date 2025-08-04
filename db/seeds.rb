@@ -183,18 +183,40 @@ writing_our_own_programs_slugs = [
 ]
 
 # TODO: Interviewing
-#   - technical-interview-prep
-#   - behavioral-interview-prep
+interviewing_course = Course.find_or_create_by!(title: "Interviewing") do |course|
+  course.position = 22
+  course.description = <<~DESCRIPTION
+
+  DESCRIPTION
+
+  puts "Created course: #{course.title}"
+end
+
+interviewing_slugs = [
+  "technical-interview-prep"
+  # TODO: behavioral-interview-prep
+]
 
 # TODO: HTTP Requests & APIs
-#   - TODO: what is http?
-#   - TODO: APIs
-#   - TODO: credentials
-#   - TODO: putting it all together
-#   - TODO: chat gpt cli
+http_requests_course = Course.find_or_create_by!(title: "HTTP Requests and APIs") do |course|
+  course.position = 30
+  course.description = <<~DESCRIPTION
+
+  DESCRIPTION
+
+  puts "Created course: #{course.title}"
+end
+
+http_requests_slugs = [
+  # TODO: what is http?
+  # TODO: APIs
+  # TODO: credentials
+  # TODO: putting it all together
+  # TODO: chat gpt cli
+]
 
 web_apps_course = Course.find_or_create_by!(title: "Web Applications") do |course|
-  course.position = 30
+  course.position = 31
   course.description = <<~DESCRIPTION
     This course introduces the core principles of building interactive web applications. You'll learn how to respond to HTTP requests, define routes, use view templates for dynamic content, work with user input, and connect to external APIs. By the end, you'll develop and deploy your own web application.
 
@@ -442,6 +464,8 @@ curricula = [
   { course: vs_code_and_terminal_essentials_course, slugs: vs_code_and_terminal_essentials_slugs },
   { course: ruby_course, slugs: ruby_slugs },
   { course: writing_our_own_programs_course, slugs: writing_our_own_programs_slugs },
+  { course: interviewing_course, slugs: interviewing_slugs },
+  { course: http_requests_course, slugs: http_requests_slugs },
   { course: web_apps_course, slugs: web_apps_slugs },
   { course: github_workflow_course, slugs: github_workflow_slugs },
   { course: full_stack_web_apps_course, slugs: full_stack_web_apps_slugs },
