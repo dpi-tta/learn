@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    @courses = Course.ordered
   end
 
   # GET /courses/1 or /courses/1.json
@@ -82,6 +82,7 @@ class CoursesController < ApplicationController
     params.expect(course: [
       :title,
       :description,
+      :position,
       course_lessons_attributes: [ [ :id, :lesson_id, :position, :_destroy ] ]
     ])
   end

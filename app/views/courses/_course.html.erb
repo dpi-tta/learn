@@ -1,5 +1,9 @@
 <div id="<%= dom_id course %>" class="course">
   
+  <span class="fs-5 mb-2 badge <%= bootstrap_badge_class(course.level) %>">
+    <%= course.level.to_s.titleize %>
+  </span>
+
   <%# TODO: move to course/_action ??? %>
   <div class="d-flex align-items-center">
     <h1 class="me-auto"><%= course.title %></h1>
