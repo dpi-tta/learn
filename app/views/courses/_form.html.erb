@@ -21,6 +21,14 @@
     <%= form.textarea :description, class: "form-control" %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :position, class: "form-label" %>
+    <%= form.number_field :position, class: "form-control" %>
+    <div class="form-text">
+      <%= course_level_hint %>
+    </div>
+  </div>
+
   <div class="mb-3" data-controller="course-lesson-selector">
     <label class="form-label">Lessons</label>
 
