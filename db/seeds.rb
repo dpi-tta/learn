@@ -135,6 +135,10 @@ end
 ruby_slugs = [
   # TODO: why
   # TODO: syntax, variables, printing (make the invisible visible)
+    # error messages
+    # comments
+    # self / objects
+    # data types
   # TODO: string
   # TODO: integer
   # TODO: float

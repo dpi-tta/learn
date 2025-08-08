@@ -69,3 +69,4 @@ gem "kramdown", "~> 2.5"
 gem "kramdown-parser-gfm", "~> 1.1"
 
 gem "pundit", "~> 2.5"
+gem "http"
