@@ -90,6 +90,7 @@ class Lesson::ReplRenderer
     %i[run reset].each do |action|
       button = Nokogiri::XML::Node.new("button", @doc)
       button["type"] = "button"
+      button["data-repl-target"] = "#{action}Button"
       button["data-action"] = "repl##{action}"
       button["class"] = @style_config.repl_classes[:"#{action}_btn"]
       button.content = action.to_s.capitalize
