@@ -4,7 +4,7 @@ require "http"
 require "json"
 
 class RunnerService
-  ENDPOINT = Rails.application.credentials.dig(:runner_url)
+  ENDPOINT = Rails.application.credentials.dig(:runner_url) + "/execute"
   OPEN_TIMEOUT = 5   # seconds
   READ_TIMEOUT = 5
 
