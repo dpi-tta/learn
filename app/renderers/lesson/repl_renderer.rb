@@ -74,12 +74,8 @@ class Lesson::ReplRenderer
     iframe["data-repl-target"] = "output"
     iframe["class"] = "#{@style_config.repl_classes[:output]} form-control"
 
-    label = Nokogiri::XML::Node.new("label", @doc)
-    label["for"] = id
-    label.content = @style_config.repl_labels[:output]
-
     wrapper.add_child(iframe)
-    wrapper.add_child(label)
+
     wrapper
   end
 

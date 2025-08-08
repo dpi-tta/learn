@@ -137,7 +137,6 @@ export default class extends Controller {
             font-family: monospace;
             font-size: 1rem;
             white-space: pre;
-            padding: 1rem;
             margin: 0;
             overflow-x: auto;
           }
