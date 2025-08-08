@@ -135,6 +135,7 @@ export default class extends Controller {
           /* Terminal block */
           pre {
             font-family: monospace;
+            font-size: 1rem;
             white-space: pre;
             padding: 1rem;
             margin: 0;
