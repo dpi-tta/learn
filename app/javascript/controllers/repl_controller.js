@@ -116,6 +116,7 @@ export default class extends Controller {
       <html data-bs-theme="${theme}">
       <head>
         <meta charset="UTF-8">
+        <!-- NOTE: this css is repeated in repl_controller.js -->
         <style>
           html, body {
             margin: 0;

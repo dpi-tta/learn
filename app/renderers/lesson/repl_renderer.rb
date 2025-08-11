@@ -74,6 +74,40 @@ class Lesson::ReplRenderer
     iframe["data-repl-target"] = "output"
     iframe["class"] = "#{@style_config.repl_classes[:output]} form-control"
 
+    iframe_content = Nokogiri::HTML::Document.new
+    head = iframe_content.create_element("head")
+    style = iframe_content.create_element("style")
+    # NOTE: this css is repeated in repl_controller.js
+    style.content = <<-CSS
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+
+      html[data-bs-theme="dark"]  {
+        background: #1a1a1a;
+        color: #e5e5e5;
+      }
+
+      html[data-bs-theme="light"] {
+        background: #ffffff;
+        color: #212529;
+      }
+
+      /* Terminal block */
+      pre {
+        font-family: monospace;
+        font-size: 1rem;
+        white-space: pre;
+        margin: 0;
+        overflow-x: auto;
+      }
+    CSS
+    head.add_child(style)
+
+    iframe_content.add_child(head)
+    iframe["srcdoc"] = iframe_content.to_html
+
     wrapper.add_child(iframe)
 
     wrapper
