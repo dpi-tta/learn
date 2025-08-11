@@ -133,7 +133,7 @@ end
 
 # NOTE: create projects to practice
 ruby_slugs = [
-  # TODO: why
+  "why-ruby",
   # TODO: syntax, variables, printing (make the invisible visible)
     # error messages
     # comments
