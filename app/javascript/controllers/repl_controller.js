@@ -10,6 +10,9 @@ export default class extends Controller {
     this.observeTheme()
     this.initialCode = this.editorTarget.value.trim()
     this.autoResizeEditor()
+
+    // initialize output to empty so it applies theme
+    this.setOutput(this.wrapInHtml(""))
   }
 
   disconnect() {
@@ -58,9 +61,11 @@ export default class extends Controller {
   observeTheme() {
     const apply = () => {
       this.theme = this.currentTheme()
-      // if an iframe is already rendered, update it in-place
+      // if an iframe is already rendered, update it in-place with theme
       const documentElement = this.outputTarget.contentDocument?.documentElement
-      if (documentElement) documentElement.setAttribute('data-bs-theme', this.theme)
+      if (documentElement) {
+        documentElement.setAttribute('data-bs-theme', this.theme)
+      }
     }
 
     apply()
