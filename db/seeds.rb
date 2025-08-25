@@ -124,31 +124,24 @@ ruby_course = Course.find_or_create_by!(title: "Ruby") do |course|
     ## Learning Objectives
     - Understand the benefits of Object Oriented Programming
     - Understand the basic syntax of Ruby
-    - Learn the fundamental building blocks of object oriented programming (Variable, String, Integer, Float, Date, Array, Printing, Conditionals, Loops, Hash, Enumerables, and Classes)
+    - Learn the fundamental building blocks of object oriented programming
     - Utilize the fundamental building blocks to solve challenges in the Ruby Dojo
   DESCRIPTION
 
   puts "Created course: #{course.title}"
 end
 
-# NOTE: create projects to practice
 ruby_slugs = [
-  "why-ruby",
-  # TODO: syntax, variables, printing (make the invisible visible)
-    # error messages
-    # comments
-    # self / objects
-    # data types
-  # TODO: string
-  # TODO: integer
-  # TODO: float
-  # TODO: date
+  "ruby-why",
+  "ruby-basics",
+  "ruby-string",
+  "ruby-numeric",
+  # TODO: date / datetime / timezone?
   # TODO: array
-  # TODO: string interpolation and printing
-  # TODO: conditionals
-  # TODO: loops
-  # TODO: each
+  # TODO: conditionals (boolean / if / and / or)
+  # TODO: loops (for each)
   # TODO: hash
+  # TODO: file i/o
   "ruby-enumerables",
   # TODO: classes
   "our-own-classes-level-up",
