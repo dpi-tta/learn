@@ -455,6 +455,9 @@ data_structures_and_algorithms_slugs = [
   "ruby-data-structures-algorithms-reverse-linked-list"
 ]
 
+# TODO: Next Steps course
+
+
 curricula = [
   { course: onboarding_course, slugs: onboarding_slugs },
   { course: html_css_course, slugs: html_css_slugs },
