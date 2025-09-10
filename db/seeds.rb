@@ -136,9 +136,9 @@ ruby_slugs = [
   "ruby-basics",
   "ruby-string",
   "ruby-numeric",
-  # TODO: date / datetime / timezone?
-  # TODO: array
+  "ruby-date", # TODO: date / datetime / timezone?
   # TODO: conditionals (boolean / if / and / or)
+  # TODO: array
   # TODO: loops (for each)
   # TODO: hash
   # TODO: file i/o
