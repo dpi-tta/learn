@@ -1,4 +1,4 @@
-<% if lesson.github_repository_url %>
+<% if lesson.github_repository_url.present? %>
   <div class="github-link">
     <%= link_to lesson.github_repository_url, target: "_blank", class: "btn btn-outline-secondary" do %>
       <i class="bi bi-github me-1"></i> View on GitHub
