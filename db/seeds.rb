@@ -140,15 +140,15 @@ ruby_slugs = [
   # TODO: conditionals (boolean / if / and / or)
   # TODO: array
   # TODO: loops (for each)
-  # TODO: hash
-  # TODO: file i/o
+  "ruby-hash",
+  # TODO: file i/o + ARGV
   "ruby-enumerables",
   # TODO: classes
-  "our-own-classes-level-up",
+  "our-own-classes-level-up"
   # TODO: references, docs, newsletter and more practice (eg codecademy, exercism)
   # NOTE: may just use project for the "gym"
-  "ruby-dojo-bank-account",
-  "ruby-dojo-todo-list"
+  # "ruby-dojo-bank-account",
+  # "ruby-dojo-todo-list"
 ]
 
 
