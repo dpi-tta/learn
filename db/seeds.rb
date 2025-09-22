@@ -141,8 +141,8 @@ ruby_slugs = [
   # TODO: array
   # TODO: loops (for each)
   "ruby-hash",
-  # TODO: file i/o + ARGV
   "ruby-enumerables",
+  "ruby-io", # TODO: file i/o + ARGV
   # TODO: classes
   "our-own-classes-level-up"
   # TODO: references, docs, newsletter and more practice (eg codecademy, exercism)
@@ -151,7 +151,7 @@ ruby_slugs = [
   # "ruby-dojo-todo-list"
 ]
 
-
+# TODO: combine these lessons with ruby course?
 # TODO: Writing Our Own Programs course
 writing_our_own_programs_course = Course.find_or_create_by!(title: "Writing our own programs") do |course|
   course.position = 21
