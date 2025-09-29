@@ -134,9 +134,10 @@ end
 ruby_slugs = [
   "ruby-why",
   "ruby-basics",
-  "ruby-string",
+  "ruby-string",  # TODO: regex?
   "ruby-numeric",
   "ruby-date",
+  "ruby-conditionals",
   # TODO: conditionals (boolean / if / and / or)
   # TODO: array
   # TODO: loops (for each)
@@ -293,6 +294,31 @@ full_stack_web_apps_course = Course.find_or_create_by!(title: "Full Stack Web Ap
   puts "Created course: #{course.title}"
 end
 
+# TODO: add more lessons here
+# bootstrap
+# RCAV
+# hard coded routes
+# dynamic routes
+# dynamic path segments
+# reading console logs and error messages
+# active record / migrations
+# model instance methods
+# session
+# association accessors
+# validations
+# CRUD
+# MVC
+# generators
+# sample data, tasks
+#
+# helper methods
+# - named routes / links
+# - forms
+# - link_to
+# - partials
+# user auth
+# ajax / javascrip
+# pundit authorization
 full_stack_web_apps_slugs = [
   "debugging",
   "rails-migrations",
