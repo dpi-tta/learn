@@ -138,7 +138,6 @@ ruby_slugs = [
   "ruby-numeric",
   "ruby-date",
   "ruby-conditionals",
-  # TODO: conditionals (boolean / if / and / or)
   # TODO: array
   # TODO: loops (for each)
   "ruby-hash",
