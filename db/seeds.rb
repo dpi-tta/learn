@@ -138,17 +138,22 @@ ruby_slugs = [
   "ruby-numeric",
   "ruby-date",
   "ruby-conditionals",
-  # TODO: array
+  "ruby-array",
   # TODO: loops (for each)
   "ruby-hash",
   "ruby-enumerables",
-  "ruby-io", # TODO: file i/o + ARGV
+  "ruby-io",
   # TODO: classes
   "our-own-classes-level-up"
   # TODO: references, docs, newsletter and more practice (eg codecademy, exercism)
   # NOTE: may just use project for the "gym"
   # "ruby-dojo-bank-account",
   # "ruby-dojo-todo-list"
+  #
+  # "ruby-debugging-tips",
+  # "ruby-style-basics",
+  # "minitest",
+  # "command-line-interface-cli-project"
 ]
 
 # TODO: combine these lessons with ruby course?
