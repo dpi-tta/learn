@@ -139,7 +139,7 @@ ruby_slugs = [
   "ruby-date",
   "ruby-conditionals",
   "ruby-array",
-  # TODO: loops (for each)
+  "ruby-loops",
   "ruby-hash",
   "ruby-enumerables",
   "ruby-io",
