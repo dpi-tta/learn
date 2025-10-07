@@ -472,7 +472,6 @@ curricula = [
   { course: html_css_course, slugs: html_css_slugs },
   { course: vs_code_and_terminal_essentials_course, slugs: vs_code_and_terminal_essentials_slugs },
   { course: ruby_course, slugs: ruby_slugs },
-  { course: writing_our_own_programs_course, slugs: writing_our_own_programs_slugs },
   { course: interviewing_course, slugs: interviewing_slugs },
   { course: http_requests_course, slugs: http_requests_slugs },
   { course: web_apps_course, slugs: web_apps_slugs },
