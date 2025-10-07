@@ -119,18 +119,28 @@ ruby_course = Course.find_or_create_by!(title: "Ruby") do |course|
   course.description = <<~DESCRIPTION
     This course provides an introduction to Object Oriented Programming (OOP) with Ruby.
     It covers the basics of Ruby (syntax, data types, methods, conditionals, loops, and creating classes).
-    By the end you will be able to write your own robust Ruby programs.
+    The course then builds on your fundamentals of Ruby programming, focusing on practical skills and real-world applications.
+    By the end you will be able to write, run, and debug your own robust Ruby programs, use Ruby gems, and employ proper coding style and testing techniques.
 
     ## Learning Objectives
     - Understand the benefits of Object Oriented Programming
     - Understand the basic syntax of Ruby
     - Learn the fundamental building blocks of object oriented programming
     - Utilize the fundamental building blocks to solve challenges in the Ruby Dojo
+    - Write and execute Ruby programs in a real development environment.
+    - Implement debugging techniques to identify and fix errors in Ruby code.
+    - Apply proper coding styles and conventions in Ruby to create readable and maintainable code.
+    - Use Ruby gems to enhance functionality and leverage existing code.
+    - Write and run tests using MiniTest to ensure code reliability and quality.
+    - Create a command-line interface (CLI) Ruby project.
   DESCRIPTION
 
   puts "Created course: #{course.title}"
 end
 
+# Use singular when referring to a Ruby class or concept name,
+# use plural when the lesson covers a category or repeated structure.
+# codespaces for ruby programs lesson?
 ruby_slugs = [
   "ruby-why",
   "ruby-basics",
@@ -143,45 +153,14 @@ ruby_slugs = [
   "ruby-hash",
   "ruby-enumerables",
   "ruby-io",
-  # TODO: classes
-  "our-own-classes-level-up"
-  # TODO: references, docs, newsletter and more practice (eg codecademy, exercism)
-  # NOTE: may just use project for the "gym"
-  # "ruby-dojo-bank-account",
-  # "ruby-dojo-todo-list"
-  #
+  "ruby-class",
+  "ruby-oop"
+  # "ruby-next-steps" references, docs, newsletter and more practice (eg codecademy, exercism)
+  # "ruby-dojo"
   # "ruby-debugging-tips",
   # "ruby-style-basics",
   # "minitest",
-  # "command-line-interface-cli-project"
-]
-
-# TODO: combine these lessons with ruby course?
-# TODO: Writing Our Own Programs course
-writing_our_own_programs_course = Course.find_or_create_by!(title: "Writing our own programs") do |course|
-  course.position = 21
-  course.description = <<~DESCRIPTION
-    This course is designed to build on your fundamentals of Ruby programming, focusing on practical skills and real-world applications. You will learn how to write, run, and debug Ruby programs, use Ruby gems, and employ proper coding style and testing techniques.
-
-    ## Learning Objectives:
-
-    - Write and execute Ruby programs in a real development environment.
-    - Implement debugging techniques to identify and fix errors in Ruby code.
-    - Apply proper coding styles and conventions in Ruby to create readable and maintainable code.
-    - Use Ruby gems to enhance functionality and leverage existing code.
-    - Write and run tests using MiniTest to ensure code reliability and quality.
-    - Create a command-line interface (CLI) Ruby project.
-  DESCRIPTION
-
-  puts "Created course: #{course.title}"
-end
-
-writing_our_own_programs_slugs = [
-  # codespaces for ruby programs
-  "ruby-debugging-tips",
-  "ruby-style-basics",
-  "minitest",
-  "command-line-interface-cli-project"
+  # "command-line-interface-project"
 ]
 
 # TODO: Interviewing
