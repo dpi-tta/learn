@@ -158,9 +158,9 @@ ruby_slugs = [
   # "ruby-dojo"
   "ruby-debugging-tips",
   "ruby-style-basics",
-  "minitest",
-  "command-line-interface-cli-project"
-  # "ruby-next-steps" references, docs, newsletter and more practice (eg codecademy, exercism)
+  "ruby-minitest",
+  "ruby-command-line-interface-cli-project",
+  "ruby-next-steps"
 ]
 
 # TODO: Interviewing
