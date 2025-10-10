@@ -156,6 +156,7 @@ ruby_slugs = [
   "ruby-class",
   "ruby-oop",
   # "ruby-dojo"
+  # TODO: exceptions and errors?
   "ruby-debugging-tips",
   "ruby-style-basics",
   "ruby-minitest",
@@ -174,8 +175,8 @@ interviewing_course = Course.find_or_create_by!(title: "Interviewing") do |cours
 end
 
 interviewing_slugs = [
-  "technical-interview-prep"
-  # TODO: behavioral-interview-prep
+  "technical-interview-prep",
+  "behavioral-interview-prep"
 ]
 
 # TODO: HTTP Requests & APIs
