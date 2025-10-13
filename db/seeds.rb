@@ -175,8 +175,11 @@ interviewing_course = Course.find_or_create_by!(title: "Interviewing") do |cours
 end
 
 interviewing_slugs = [
-  "technical-interview-prep",
-  "behavioral-interview-prep"
+  "interview-prep-technical",
+  "interview-prep-behavioral",
+  "interview-prep-resume",
+  "interview-prep-elevator-speech",
+  "interview-prep-career-exploration"
 ]
 
 # TODO: HTTP Requests & APIs
