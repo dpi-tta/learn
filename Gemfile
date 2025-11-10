@@ -70,3 +70,5 @@ gem "kramdown-parser-gfm", "~> 1.1"
 
 gem "pundit", "~> 2.5"
 gem "http"
+
+gem "sqlite3", "~> 2.8"
