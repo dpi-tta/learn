@@ -164,7 +164,6 @@ ruby_slugs = [
   "ruby-next-steps"
 ]
 
-# TODO: Interviewing
 interviewing_course = Course.find_or_create_by!(title: "Interviewing") do |course|
   course.position = 22
   course.description = <<~DESCRIPTION
@@ -193,9 +192,8 @@ http_requests_course = Course.find_or_create_by!(title: "HTTP Requests and APIs"
 end
 
 http_requests_slugs = [
-  # TODO: what is http?
-  # TODO: APIs
-  # TODO: credentials
+  "web-and-http"
+  # TODO: APIs and Credentials
   # TODO: putting it all together
   # TODO: chat gpt cli
 ]
