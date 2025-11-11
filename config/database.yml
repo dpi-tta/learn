@@ -85,16 +85,15 @@ production:
     database: storage/production.sqlite3
     username: learn
     password: <%= ENV["LEARN_DATABASE_PASSWORD"] %>
-  # TODO: add cache, queue, cable later
-  # cache:
-  #   <<: *primary_production
-  #   database: learn_production_cache
-  #   migrations_paths: db/cache_migrate
-  # queue:
-  #   <<: *primary_production
-  #   database: learn_production_queue
-  #   migrations_paths: db/queue_migrate
-  # cable:
-  #   <<: *primary_production
-  #   database: learn_production_cable
-  #   migrations_paths: db/cable_migrate
+  cache:
+    <<: *primary_production
+    database: storage/production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: storage/production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: storage/production_cable
+    migrations_paths: db/cable_migrate
