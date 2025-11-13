@@ -11,7 +11,9 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    return true if user&.admin?
+
+    course.published?
   end
 
   def create?
@@ -42,7 +44,11 @@ class CoursePolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      scope.all
+      if user&.admin?
+        scope.all
+      else
+        scope.published
+      end
     end
   end
 end

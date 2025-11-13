@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <div class="form-check form-switch mb-3">
+    <%= form.check_box :published,
+      {
+        class: "form-check-input",
+        checked: @course.published?
+      },
+      "1",
+      "0" 
+    %>
+    <%= form.label :published, "Published?", class: "form-check-label" %>
+  </div>
+
   <div class="mb-3">
     <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-control" %>

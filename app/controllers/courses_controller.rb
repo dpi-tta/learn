@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.ordered
+    @courses = policy_scope(Course).ordered
   end
 
   # GET /courses/1 or /courses/1.json
@@ -83,6 +83,7 @@ class CoursesController < ApplicationController
       :title,
       :description,
       :position,
+      :published,
       course_lessons_attributes: [ [ :id, :lesson_id, :position, :_destroy ] ]
     ])
   end

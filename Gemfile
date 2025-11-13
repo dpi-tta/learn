@@ -68,7 +68,7 @@ gem "octokit", "~> 10.0", require: false
 gem "kramdown", "~> 2.5"
 gem "kramdown-parser-gfm", "~> 1.1"
 
-gem "pundit", "~> 2.5"
+gem "pundit"
 gem "http"
 
 gem "sqlite3", "~> 2.8"

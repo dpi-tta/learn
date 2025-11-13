@@ -1,8 +1,15 @@
 <div id="<%= dom_id course %>" class="course">
   
-  <span class="fs-5 mb-2 badge <%= bootstrap_badge_class(course.level) %>">
-    <%= course.level.to_s.titleize %>
-  </span>
+  <div class="d-flex justify-content-between">
+    <span class="fs-5 mb-2 badge <%= bootstrap_badge_class(course.level) %>">
+      <%= course.level.to_s.titleize %>
+    </span>
+    <% if course.unpublished? %>
+      <span class="fs-5 mb-2 badge bg-danger">
+        Unpublished
+      </span>
+    <% end %>
+  </div>
 
   <%# TODO: move to course/_action ??? %>
   <div class="d-flex align-items-center">

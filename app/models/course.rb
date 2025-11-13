@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  include Positionable
+  include Positionable, Publishable
 
   has_many :course_lessons, -> { order(:position) }, dependent: :destroy
   has_many :lessons, through: :course_lessons

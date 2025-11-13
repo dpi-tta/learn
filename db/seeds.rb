@@ -33,6 +33,7 @@ puts "Seeding courses and lesson assignments..."
 
 onboarding_course = Course.find_or_create_by!(title: "Onboarding") do |course|
   course.position = 0
+  course.published = true
   course.description = <<~DESCRIPTION
     This course provides a comprehensive introduction to essential tools and practices for effective communication, time management, and collaborative software development. You will learn how to navigate digital platforms, engage in professional interactions, manage projects using agile methodologies, and maintain robust cybersecurity practices.
 
@@ -64,6 +65,7 @@ onboarding_slugs = [
 
 html_css_course = Course.find_or_create_by!(title: "HTML & CSS") do |course|
   course.position = 10
+  course.published = true
   course.description = <<~DESCRIPTION
     This course provides an extensive overview of HTML and CSS, starting with fundamental concepts and advancing to more complex topics such as layout systems, responsive design, and deployment. You will learn how to structure web pages, style them with CSS, and eventually deploy a project online.
 
@@ -93,6 +95,7 @@ html_css_slugs = [
 
 vs_code_and_terminal_essentials_course = Course.find_or_create_by!(title: "VS Code & Terminal Essentials") do |course|
   course.position = 11
+  course.published = true
   course.description = <<~DESCRIPTION
     This course is designed to help you master your developer workflow in Visual Studio Code (VS Code) while working in Codespaces. You'll learn the essential features of VS Code, explore powerful tips and keyboard shortcuts to boost efficiency, and pick up handy tricks to streamline your setup. By the end, you'll be equipped with practical skills to code faster and more effectively in any project.
 
@@ -116,6 +119,7 @@ vs_code_and_terminal_essentials_slugs = [
 
 ruby_course = Course.find_or_create_by!(title: "Ruby") do |course|
   course.position = 20
+  course.published = true
   course.description = <<~DESCRIPTION
     This course provides an introduction to Object Oriented Programming (OOP) with Ruby.
     It covers the basics of Ruby (syntax, data types, methods, conditionals, loops, and creating classes).
@@ -166,6 +170,7 @@ ruby_slugs = [
 
 interviewing_course = Course.find_or_create_by!(title: "Interviewing") do |course|
   course.position = 22
+  course.published = true
   course.description = <<~DESCRIPTION
 
   DESCRIPTION
@@ -312,6 +317,7 @@ full_stack_web_apps_slugs = [
 
 capstone_course = Course.find_or_create_by!(title: "Capstone Project") do |course|
   course.position = 110
+  course.published = true
   course.description = <<~DESCRIPTION
     This course is the culmination of your learning journey, where you will apply all the skills acquired throughout the program to design, build, and present your own software project.
     From ideation to deployment, you will learn how to conceptualize a project, write functional requirements, and bring your idea to life.
@@ -345,6 +351,7 @@ capstone_slugs = [
 
 patterns_of_enterprise_applications_course = Course.find_or_create_by!(title: "Patterns of Enterprise Applications: Design, Architecture, and Best Practices") do |course|
   course.position = 111
+  course.published = true
   course.description = <<~DESCRIPTION
     This course delves into the essential design patterns, architectural principles, and best practices for building scalable and maintainable enterprise applications. Students will learn to simplify complex systems through service objects, embrace domain-driven design for tackling business logic, and craft clean, human-readable code. Additionally, the course explores modular programming, component-based view templates, and event-driven architectures to improve code organization, reusability, and scalability in large applications.
 
@@ -375,6 +382,7 @@ patterns_of_enterprise_applications_slugs = [
 
 extra_topics_course = Course.find_or_create_by!(title: "Extra Topics") do |course|
   course.position = 112
+  course.published = true
   course.description = <<~DESCRIPTION
     This course expands on foundational software development concepts, diving deeper into advanced topics such as security, API integrations, performance optimization, and mobile-friendly design.
     Through practical exercises and real-world applications, students will enhance their skills in managing complex Rails applications, organizing JavaScript code, ensuring quality through testing, and integrating third-party services like maps and charts.
@@ -443,6 +451,7 @@ extra_topics_slugs = [
 
 data_structures_and_algorithms_course = Course.find_or_create_by!(title: "Data Structures, Algorithms, and Acing Coding Interviews") do |course|
   course.position = 200
+  course.published = true
   course.description = <<~DESCRIPTION
     This course focuses on fundamental data structures and algorithms, as well as techniques for acing coding interviews.
     You will practice solving common algorithmic problems and learn strategies to approach and solve these problems effectively.
