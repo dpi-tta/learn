@@ -172,7 +172,15 @@ interviewing_course = Course.find_or_create_by!(title: "Interviewing") do |cours
   course.position = 22
   course.published = true
   course.description = <<~DESCRIPTION
+    This course provides a comprehensive introduction to the essential components of the job-search and interview process, guiding you from technical problem-solving to professional communication and career exploration. You will learn how to approach technical interviews with confidence, craft strong behavioral responses using established frameworks, build polished professional materials, and identify career paths aligned with your strengths and interests.
 
+    ## Learning Objectives
+
+    - Practice solving coding challenges while demonstrating object-oriented programming fundamentals, debugging skills, and clear communication.
+    - Apply the STAR method to structure behavioral interview responses that highlight your impact and experience.
+    - Create a polished, one-page resume that effectively showcases your technical and transferable skills.
+    - Develop and deliver a confident 45-60 second elevator speech tailored to networking and interview settings.
+    - Explore a variety of technical and client-facing career paths to identify roles that best match your goals and strengths.
   DESCRIPTION
 
   puts "Created course: #{course.title}"
