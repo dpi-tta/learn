@@ -11,7 +11,9 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    return true if user&.admin?
+
+    course.published?
   end
 
   def create?
