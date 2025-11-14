@@ -73,3 +73,5 @@ gem "http"
 
 gem "sqlite3", "~> 2.8"
 gem "faraday-retry"
+
+gem "dotenv", "~> 3.1"

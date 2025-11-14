@@ -393,6 +393,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv (~> 3.1)
   faraday-retry
   http
   importmap-rails
