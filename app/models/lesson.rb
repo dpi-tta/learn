@@ -8,7 +8,8 @@ class Lesson < ApplicationRecord
   # TODO: validate title
   # validates :title, presence: true
 
-  scope :search_by_title, ->(query) { where("title ILIKE ?", "%#{query}%") }
+  # TODO: change to ILIKE when moving to postgres
+  scope :search_by_title, ->(query) { where("title LIKE ?", "%#{query}%") }
 
   def to_param
     [ id, title.parameterize ].join("-")
