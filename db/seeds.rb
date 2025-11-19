@@ -247,7 +247,7 @@ github_workflow_course = Course.find_or_create_by!(title: "GitHub Workflow") do 
   course.position = 22
   course.description = <<~DESCRIPTION
     This course provides an in-depth exploration of GitHub as a key tool for version control, collaboration, and project management in software development.
-    Students will learn to set up their GitHub profiles, use Git commands for tracking changes, and collaborate effectively through branching, merging, and pull requests.
+    Trainees will learn to set up their GitHub profiles, use Git commands for tracking changes, and collaborate effectively through branching, merging, and pull requests.
     The course also covers the basics of GitHub project boards for organizing work and introduces CI/CD with GitHub Actions to automate testing and deployment.
 
     ## Learning Objectives:
@@ -273,7 +273,7 @@ github_workflow_slugs = [
 full_stack_web_apps_course = Course.find_or_create_by!(title: "Full Stack Web Applications") do |course|
   course.position = 100
   course.description = <<~DESCRIPTION
-    This course equips students with the essential tools, frameworks, and methodologies used in full stack web development. Through hands-on practice, students will gain experience working with database design and management, debugging workflows, and frameworks like Ruby on Rails and Bootstrap.
+    This course equips trainees with the essential tools, frameworks, and methodologies used in full stack web development. Through hands-on practice, trainees will gain experience working with database design and management, debugging workflows, and frameworks like Ruby on Rails and Bootstrap.
 
     ## Learning Objectives
 
@@ -360,7 +360,7 @@ patterns_of_enterprise_applications_course = Course.find_or_create_by!(title: "P
   course.position = 111
   course.published = true
   course.description = <<~DESCRIPTION
-    This course delves into the essential design patterns, architectural principles, and best practices for building scalable and maintainable enterprise applications. Students will learn to simplify complex systems through service objects, embrace domain-driven design for tackling business logic, and craft clean, human-readable code. Additionally, the course explores modular programming, component-based view templates, and event-driven architectures to improve code organization, reusability, and scalability in large applications.
+    This course delves into the essential design patterns, architectural principles, and best practices for building scalable and maintainable enterprise applications. Trainees will learn to simplify complex systems through service objects, embrace domain-driven design for tackling business logic, and craft clean, human-readable code. Additionally, the course explores modular programming, component-based view templates, and event-driven architectures to improve code organization, reusability, and scalability in large applications.
 
     ## Learning Objectives:
 
@@ -392,7 +392,7 @@ extra_topics_course = Course.find_or_create_by!(title: "Extra Topics") do |cours
   course.published = true
   course.description = <<~DESCRIPTION
     This course expands on foundational software development concepts, diving deeper into advanced topics such as security, API integrations, performance optimization, and mobile-friendly design.
-    Through practical exercises and real-world applications, students will enhance their skills in managing complex Rails applications, organizing JavaScript code, ensuring quality through testing, and integrating third-party services like maps and charts.
+    Through practical exercises and real-world applications, trainees will enhance their skills in managing complex Rails applications, organizing JavaScript code, ensuring quality through testing, and integrating third-party services like maps and charts.
     The course also covers best practices for securing credentials, deploying applications, and improving accessibility, SEO, and user experience.
 
     ## Learning Objectives:
