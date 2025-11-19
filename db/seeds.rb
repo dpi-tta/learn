@@ -264,8 +264,7 @@ github_workflow_course = Course.find_or_create_by!(title: "GitHub Workflow") do 
 end
 
 github_workflow_slugs = [
-  "setup-github-profile",
-  # TODO: git gui, git cli, commit, push, branch, merge
+  # TODO: version control, git gui, git cli, stage, commit, push, pull, status
   "code-review",
   "issues-branching-kanban",
   "continuous-integration-continuous-deployment"
