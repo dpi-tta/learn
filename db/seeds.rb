@@ -457,7 +457,7 @@ extra_topics_slugs = [
 # TODO: Bridge Course
 
 data_structures_and_algorithms_course = Course.find_or_create_by!(title: "Data Structures, Algorithms, and Acing Coding Interviews") do |course|
-  course.position = 200
+  course.position = 201
   course.published = true
   course.description = <<~DESCRIPTION
     This course focuses on fundamental data structures and algorithms, as well as techniques for acing coding interviews.
@@ -483,6 +483,21 @@ data_structures_and_algorithms_slugs = [
 ]
 
 # TODO: Next Steps course
+# define-your-learning-goal
+
+next_steps_course = Course.find_or_create_by("Next Steps") do course
+  course.position = 200
+  couse.published = true
+  course.description = <<~DESCRIPTION
+  DESCRIPTION
+end
+
+next_steps_slugs = [
+  "define-your-learning-goal"
+  # Impostor Syndrome 🥸
+  # Tech Roles and Interviewing 🧑‍💻
+  # Portfolio 💼
+]
 
 
 curricula = [
