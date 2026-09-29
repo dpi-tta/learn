@@ -3,12 +3,12 @@
     <%= render "github_link", lesson: lesson %>
   </div>
   <% if policy(lesson).edit? %>
-    <%= link_to edit_lesson_path(lesson), class: "btn btn-outline-primary me-1" do %>
+    <%= link_to edit_lesson_path(lesson), class: "btn btn-outline-primary me-1", aria: { label: "Edit this lesson" } do %>
       <i class="bi bi-pencil"></i>
     <% end %>
   <% end %>
   <% if policy(lesson).destroy? %>
-    <%= button_to lesson, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
+    <%= button_to lesson, method: :delete, class: "btn btn-outline-danger", aria: { label: "Destroy this lesson" }, data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
       <i class="bi bi-trash"></i>
     <% end %>
   <% end %>

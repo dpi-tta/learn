@@ -7,7 +7,7 @@
         <h1 class="h6 mb-0 me-auto">Lessons</h1>
         <div>
           <% if policy(Lesson).new? %>
-            <%= link_to new_lesson_path, class: 'btn btn-outline-primary me-2' do %>
+            <%= link_to new_lesson_path, class: 'btn btn-outline-primary me-2', aria: { label: "New lesson" } do %>
               <i class="bi bi-plus fs-6"></i>
             <% end %>
           <% end %>
