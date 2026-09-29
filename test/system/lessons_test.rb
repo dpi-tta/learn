@@ -12,7 +12,7 @@ class LessonsTest < ApplicationSystemTestCase
 
   test "should create lesson" do
     visit lessons_url
-    click_on "New lesson"
+    find('a[aria-label="New lesson"]').click
 
     fill_in "Content", with: @lesson.content
     fill_in "Github repository url", with: @lesson.github_repository_url
@@ -25,7 +25,7 @@ class LessonsTest < ApplicationSystemTestCase
 
   test "should update Lesson" do
     visit lesson_url(@lesson)
-    click_on "Edit this lesson", match: :first
+    find('a[aria-label="Edit this lesson"]').click
 
     fill_in "Content", with: @lesson.content
     fill_in "Github repository url", with: @lesson.github_repository_url
@@ -38,7 +38,7 @@ class LessonsTest < ApplicationSystemTestCase
 
   test "should destroy Lesson" do
     visit lesson_url(@lesson)
-    click_on "Destroy this lesson", match: :first
+    find('button[aria-label="Destroy this lesson"]').click
 
     assert_text "Lesson was successfully destroyed"
   end

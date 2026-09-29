@@ -12,7 +12,7 @@ class CoursesTest < ApplicationSystemTestCase
 
   test "should create course" do
     visit courses_url
-    click_on "New course"
+    find('a[aria-label="New course"]').click
 
     fill_in "Description", with: @course.description
     fill_in "Title", with: @course.title
@@ -24,7 +24,7 @@ class CoursesTest < ApplicationSystemTestCase
 
   test "should update Course" do
     visit course_url(@course)
-    click_on "Edit this course", match: :first
+    find('a[aria-label="Edit this course"]').click
 
     fill_in "Description", with: @course.description
     fill_in "Title", with: @course.title
@@ -36,7 +36,7 @@ class CoursesTest < ApplicationSystemTestCase
 
   test "should destroy Course" do
     visit course_url(@course)
-    click_on "Destroy this course", match: :first
+    find('button[aria-label="Destroy this course"]').click
 
     assert_text "Course was successfully destroyed"
   end
