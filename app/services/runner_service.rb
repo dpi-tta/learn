@@ -5,7 +5,8 @@ require "json"
 
 class RunnerService
   API_KEY  = Rails.application.credentials.dig(:runner, :api_key)
-  ENDPOINT = Rails.application.credentials.dig(:runner, :url) + "/execute"
+  RUNNER_URL = Rails.application.credentials.dig(:runner, :url)
+  ENDPOINT = "#{RUNNER_URL}/execute" if RUNNER_URL
   OPEN_TIMEOUT = 5   # seconds
   READ_TIMEOUT = 5
 
@@ -22,6 +23,7 @@ class RunnerService
   def call
     return error_result("empty code") if @code.strip.empty?
     return error_result("missing API key") if API_KEY.to_s.empty?
+    return error_result("missing runner URL") if RUNNER_URL.to_s.empty?
 
     response = HTTP
       .timeout(connect: OPEN_TIMEOUT, read: READ_TIMEOUT)

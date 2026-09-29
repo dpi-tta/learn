@@ -10,7 +10,7 @@
       <%= Lesson::MarkdownRenderer.new(@lesson.content).render %>
     </div>
     <div class="col-lg-3 d-none d-lg-block">
-      <%= Lesson::TableOfContentsRenderer.new(@lesson.content).desktop_html.html_safe %>
+      <%= sanitize(Lesson::TableOfContentsRenderer.new(@lesson.content).desktop_html, tags: %w[nav h6 ul li a], attributes: %w[class href id data-controller data-table-of-contents--scrollspy-target]) %>
     </div>
   </div>
 </div>
