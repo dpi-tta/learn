@@ -3,9 +3,9 @@
 one:
   title: MyString
   content: MyText
-  github_url: MyString
+  github_repository_url:
 
 two:
   title: MyString
   content: MyText
-  github_url: MyString
+  github_repository_url:

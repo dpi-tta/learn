@@ -39,7 +39,7 @@ module Lesson::GithubSyncable
   private
 
   def github_repository_path
-    nil unless github_repository_url.present?
+    return unless github_repository_url.present?
 
     github_repository_url.gsub("https://github.com/", "")
   end

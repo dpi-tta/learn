@@ -26,6 +26,6 @@ module Course::Positionable
   def assign_position
     return if position.present?
 
-    self.position = maximum(:position).to_i + 1 if course
+    self.position = self.class.maximum(:position).to_i + 1
   end
 end

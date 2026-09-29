@@ -15,12 +15,12 @@
   <div class="d-flex align-items-center">
     <h1 class="me-auto"><%= course.title %></h1>
     <% if policy(course).edit? %>
-      <%= link_to edit_course_path(course), class: "btn btn-outline-primary me-1" do %>
+      <%= link_to edit_course_path(course), class: "btn btn-outline-primary me-1", aria: { label: "Edit this course" } do %>
         <i class="bi bi-pencil"></i>
       <% end %>
     <% end %>
     <% if policy(course).destroy? %>
-      <%= button_to course, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
+      <%= button_to course, method: :delete, class: "btn btn-outline-danger", aria: { label: "Destroy this course" }, data: { turbo_confirm: "Are you sure? This cannot be reversed."} do %>
         <i class="bi bi-trash"></i>
       <% end %>
     <% end %>

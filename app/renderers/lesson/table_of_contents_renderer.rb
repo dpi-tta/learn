@@ -1,3 +1,5 @@
+require "cgi"
+
 class Lesson::TableOfContentsRenderer
   attr_reader :headings
 
@@ -57,7 +59,9 @@ class Lesson::TableOfContentsRenderer
   def build_list_items
     headings.map do |h|
       indent = (h[:level] - 2) * 1
-      %(<li class="nav-item ps-#{indent}"><a class="nav-link" href="##{h[:id]}">#{h[:text]}</a></li>)
+      id = CGI.escapeHTML(h[:id].to_s)
+      text = CGI.escapeHTML(h[:text].to_s)
+      %(<li class="nav-item ps-#{indent}"><a class="nav-link" href="##{id}">#{text}</a></li>)
     end.join("\n")
   end
 end
