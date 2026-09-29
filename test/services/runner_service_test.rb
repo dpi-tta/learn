@@ -1,4 +1,5 @@
 require "test_helper"
+require "minitest/mock"
 
 class RunnerServiceTest < ActiveSupport::TestCase
   test "reports missing runner URL without making a request" do

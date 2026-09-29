@@ -15,7 +15,7 @@ class LessonsTest < ApplicationSystemTestCase
     click_on "New lesson"
 
     fill_in "Content", with: @lesson.content
-    fill_in "Github url", with: @lesson.github_url
+    fill_in "Github repository url", with: @lesson.github_repository_url
     fill_in "Title", with: @lesson.title
     click_on "Create Lesson"
 
@@ -28,7 +28,7 @@ class LessonsTest < ApplicationSystemTestCase
     click_on "Edit this lesson", match: :first
 
     fill_in "Content", with: @lesson.content
-    fill_in "Github url", with: @lesson.github_url
+    fill_in "Github repository url", with: @lesson.github_repository_url
     fill_in "Title", with: @lesson.title
     click_on "Update Lesson"
 

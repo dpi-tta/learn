@@ -3,6 +3,7 @@ require "test_helper"
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @course = courses(:one)
+    post session_url, params: { email_address: users(:one).email_address, password: "password" }
   end
 
   test "should get index" do
